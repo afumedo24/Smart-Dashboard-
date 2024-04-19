@@ -1,8 +1,3 @@
-
-
-import './assets/main.css'
-
-
 // import tailwind styles
 import './styles/main.css'
 
