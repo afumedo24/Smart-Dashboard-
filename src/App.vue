@@ -4,7 +4,7 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-  <div class="bg-gradient-to-t from-thd_donaublue to-thd_darkblue h-screen">
+  <div class="bg-white h-screen">
     <NavBar />
     <RouterView />
   </div>
