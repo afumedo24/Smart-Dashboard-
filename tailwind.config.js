@@ -10,6 +10,9 @@ export default {
       thd_ai_red: 'E73D55',
       white: '#ffffff',
       black: '#1A1A1A'
+    },
+    fontFamily: {
+      saira: ['saira', 'sans-serif']
     }
   },
   plugins: []
