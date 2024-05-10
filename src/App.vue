@@ -4,10 +4,8 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-  <div class="bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen">
+  <div class="bg-gradient-to-t from-thd_donaublue to-thd_darkblue h-screen">
     <NavBar />
-    <!--  Test it later out 
     <RouterView />
-    -->
   </div>
 </template>

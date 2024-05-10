@@ -1,5 +1,5 @@
 <template>
-  <div class="top-10">
+  <div>
     <h1>This is the MensaPage</h1>
   </div>
 </template>
