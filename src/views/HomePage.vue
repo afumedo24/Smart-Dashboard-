@@ -19,7 +19,8 @@
         </button>
 
         <!-- Here comes the Temperature and Humidty values-->
-        <div class="w-full h-20 bg-black">
+        <div class="w-full h-20">
+          <temp-and-hum> </temp-and-hum>
           <!-- Here comes the Temperature and Humidty values-->
         </div>
       </div>
@@ -36,4 +37,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import TempAndHum from '../components/TempAndHum.vue'
+</script>

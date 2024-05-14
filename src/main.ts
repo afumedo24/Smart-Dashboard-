@@ -2,7 +2,7 @@
 import './styles/main.css'
 
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
-import { SiHomeassistant, GiHamburgerMenu, IoClose } from 'oh-vue-icons/icons'
+import { SiHomeassistant, GiHamburgerMenu, IoClose, MdSunny } from 'oh-vue-icons/icons'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -10,7 +10,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-addIcons(SiHomeassistant, GiHamburgerMenu, IoClose)
+addIcons(SiHomeassistant, GiHamburgerMenu, IoClose, MdSunny)
 
 const app = createApp(App)
 
