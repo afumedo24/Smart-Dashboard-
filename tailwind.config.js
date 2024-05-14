@@ -2,7 +2,13 @@
 export default {
   content: ['./src/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '2/3': '2 / 3',
+        '1/2': '1 / 2'
+      }
+    },
     colors: {
       thd_darkblue: '#1A4273',
       thd_donaublue: '#009FE3',

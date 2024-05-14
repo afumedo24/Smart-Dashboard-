@@ -47,7 +47,7 @@ const navLinks = [
           </RouterLink>
 
           <button class="bg-thd_donaublue text-white py-2 px-5 md:ml-8 rounded md:static">
-            Log In
+            Login
           </button>
         </ul>
       </div>
