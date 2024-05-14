@@ -15,8 +15,8 @@ const navLinks = [
 </script>
 
 <template>
-  <nav class="shadow-md w-full fixed top-0 left-0">
-    <div class="md:px-10 py-4 px-7 md:flex justify-between items-center bg-thd_darkblue text-white">
+  <nav class="w-full fixed top-0 left-0 drop-shadow-md">
+    <div class="md:px-10 py-8 px-7 md:flex justify-between items-center bg-thd_darkblue text-white">
       <!-- Logo & Header here -->
       <!-- 
         <div class="flex text-2xl cursor-pointer items-center gap-1">
@@ -42,11 +42,18 @@ const navLinks = [
           class="md:flex md:items-center md:pb-0 pb-12 bg-thd_darkblue text-white absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"
           :class="isOpen ? 'block' : 'hidden'"
         >
-          <RouterLink v-for="(link, index) in navLinks" :key="index" :to="link.path">
-            <p class="my-7 md:my-0 md:ml-8 cursor-pointer">{{ link.text }}</p>
+          <RouterLink v-for="(links, index) in navLinks" :key="index" :to="links.path">
+            <p
+              class="my-7 md:my-0 md:ml-8 font-saira font-medium text-2xl cursor-pointer hover:text-thd_donaublue"
+              :class="links.path === $route.path ? 'text-thd_ai_red' : 'text-white'"
+            >
+              {{ links.text }}
+            </p>
           </RouterLink>
 
-          <button class="bg-thd_donaublue text-white py-2 px-5 md:ml-8 rounded md:static">
+          <button
+            class="bg-thd_donaublue text-white text-2xl py-3 px-8 md:ml-8 rounded-[10px] md:static"
+          >
             Login
           </button>
         </ul>
