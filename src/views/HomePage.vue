@@ -10,7 +10,7 @@
           Home
         </h1>
         <!-- Subtitle -->
-        <p class="py-2 mb-8">This Application allows you to remotely manage modern apartments</p>
+        <p class="py-2 mb-14">This Application allows you to remotely manage modern apartments</p>
         <!-- Button (for Login) -->
         <button
           class="w-full py-5 px-6 bg-thd_donaublue text-white text-xl font-medium rounded-[24px] drop-shadow-md"
@@ -19,10 +19,8 @@
         </button>
 
         <!-- Here comes the Temperature and Humidty values-->
-        <div class="w-full h-20">
-          <temp-and-hum> </temp-and-hum>
-          <!-- Here comes the Temperature and Humidty values-->
-        </div>
+        <temp-and-hum> </temp-and-hum>
+        <!-- Here comes the Temperature and Humidty values-->
       </div>
 
       <div class="w-2/3 mt-10 ml-[100px]">
