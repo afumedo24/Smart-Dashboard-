@@ -25,7 +25,7 @@ const navLinks = [
         </div>
    -->
       <div>
-        <img src="../assets/thd_logo_weis.png" class="h-12 md:h-14 cursor-pointer" />
+        <img src="../assets/thd_logo_weis.png" class="h-10 md:h-11 lg:h-14 cursor-pointer" />
       </div>
 
       <!-- BurgerMenu  here -->
