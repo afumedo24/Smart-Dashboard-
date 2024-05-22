@@ -52,11 +52,11 @@ const menus = ref<Menu[]>([
   },
   {
     dish_type: 'Main Dish',
-    dish_name: 'Coke'
+    dish_name: 'Burger'
   },
   {
     dish_type: 'Main Dish',
-    dish_name: 'Chai'
+    dish_name: 'Nudeln'
   },
   {
     dish_type: 'Main Dish',
