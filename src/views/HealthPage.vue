@@ -1,5 +1,5 @@
 <template>
-  <div>HAllo this is health</div>
+  <div>This is </div>
 </template>
 
 <script setup></script>
