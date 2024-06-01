@@ -17,12 +17,12 @@
   <!-- remove Background Color (bg-[#4b5563]) if Background Images are added -->
   <!-- the Card (Background) -->
   <div
-    class="relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 max-w-[630px] h-[320px] mx-auto mt-8 bg-[#4b5563]"
+    class="relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 max-w-[630px] h-[320px] mx-auto mt-8 bg-[#4b5563] text-white"
   >
     <!-- Menu object: the type and name of the dish -->
-    <div class="mt-3 gap-y-1 overflow-hidden text-lg text-white">{{ menu.category }}</div>
-    <h3 class="text-3xl font-medium text-white">{{ menu.name }}</h3>
-    <p>Price for students: {{ menu.prices.students }} $</p>
+    <div class="mt-3 gap-y-1 overflow-hidden text-lg">{{ menu.category }}</div>
+    <h3 class="text-3xl font-medium">{{ menu.name }}</h3>
+    <p class="text-lg">Student Price: {{ menu.prices.students }} Є</p>
   </div>
 </template>
 
