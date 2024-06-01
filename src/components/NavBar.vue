@@ -29,8 +29,9 @@ const navLinks = [
 const route = useRoute() // Access the current route
 </script>
 
+<!-- z-index added, -->
 <template>
-  <nav class="w-full top-0 left-0 drop-shadow-md absolute">
+  <nav class="w-full top-0 left-0 drop-shadow-md fixed z-10">
     <div class="md:px-10 py-8 px-7 md:flex justify-between items-center bg-thd_darkblue text-white">
       <!-- Logo -->
 
@@ -43,8 +44,7 @@ const route = useRoute() // Access the current route
 
       <!-- Navigation Links -->
       <ul
-        class="md:flex md:items-center md:pb-0 pb-12 bg-thd_darkblue text-white
-         absolute md:static left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"
+        class="md:flex md:items-center md:pb-0 pb-12 bg-thd_darkblue text-white absolute md:static left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"
         :class="isOpen ? 'block' : 'hidden'"
       >
         <li v-for="link in navLinks" :key="link.text" class="md:ml-8 my-7 md:my-0">

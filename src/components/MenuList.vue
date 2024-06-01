@@ -30,18 +30,23 @@
     and the functions for the Date Picker
 -->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import MenuCardComponent from './MenuCardComponent.vue'
 //import VueDatePicker from '@vuepic/vue-datepicker'
 //import '@vuepic/vue-datepicker/dist/main.css'
 
-// the Menu object for the Menu Card Component
-interface Menu {
-  dish_type: string
-  dish_name: string
-}
+import { useMensaStore } from '../stores/MensaStore'
+
+const mensaStore = useMensaStore()
+onMounted(() => {
+  mensaStore.fetchMenu()
+})
+
+// delete this line ***************
+console.log(mensaStore.menu)
+
 // dummy data for the menu
-const menus = ref<Menu[]>([
+/*const menus = ref<Menu[]>([
   {
     dish_type: 'Main Dish',
     dish_name: 'Wiener Schnitzel'
@@ -62,7 +67,8 @@ const menus = ref<Menu[]>([
     dish_type: 'Main Dish',
     dish_name: 'Wiener Schnitzel'
   }
-])
+])*/
+const menus = mensaStore.menu
 
 /*
 const selectedDate = ref<Date | null>(new Date()) // Initialize with current date

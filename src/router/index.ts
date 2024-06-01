@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import MensaPage from '../views/MensaPage.vue'
-import HealthPage from '../views/HealthPage.vue'
+//import HealthPage from '../views/HealthPage.vue'
 import MensaMenuPage from '../views/MensaMenuPage.vue'
 import AppointentPage from '../views/AppointentPage.vue'
 

@@ -20,8 +20,9 @@
     class="relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 max-w-[630px] h-[320px] mx-auto mt-8 bg-[#4b5563]"
   >
     <!-- Menu object: the type and name of the dish -->
-    <div class="mt-3 gap-y-1 overflow-hidden text-lg text-white">{{ menu.dish_type }}</div>
-    <h3 class="text-3xl font-medium text-white">{{ menu.dish_name }}</h3>
+    <div class="mt-3 gap-y-1 overflow-hidden text-lg text-white">{{ menu.category }}</div>
+    <h3 class="text-3xl font-medium text-white">{{ menu.name }}</h3>
+    <p>Price for students: {{ menu.prices.students }} $</p>
   </div>
 </template>
 
@@ -30,13 +31,8 @@
     and gets the Props from the parent component
 -->
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 // the Props for the Menu Card Component
-interface Menu {
-  dish_type: string
-  dish_name: string
-}
+import { type Menu } from '../services/types/MensaMenu.type'
 // get the Props from the parent component
 const props = defineProps<{ menu: Menu }>()
 </script>
