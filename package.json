@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -14,11 +14,13 @@
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^8.6.0",
+    "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-datepicker": "^0.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

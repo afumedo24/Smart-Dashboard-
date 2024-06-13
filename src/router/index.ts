@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import MensaPage from '../views/MensaPage.vue'
-//import HealthPage from '../views/HealthPage.vue'
-import MensaMenuPage from '../views/MensaMenuPage.vue'
-import AppointentPage from '../views/AppointentPage.vue'
+import SensorPage from '../views/SensorPage.vue'
+import MensaMenuListPage from '../views/MensaMenuPage.vue'
+import SettingsPage from '../views/SettingsPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,14 +19,19 @@ const router = createRouter({
       component: MensaPage
     },
     {
-      path: '/health',
-      name: 'health',
-      component: MensaMenuPage
+      path: '/mensa/menu',
+      name: 'mensa-menu',
+      component: MensaMenuListPage
     },
     {
-      path: '/appointment',
-      name: 'appointment',
-      component: AppointentPage
+      path: '/sensor',
+      name: 'sensor',
+      component: SensorPage
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: SettingsPage
     }
   ]
 })

@@ -10,9 +10,12 @@ export default {
       }
     },
     colors: {
-      thd_darkblue: '#1A4273',
-      thd_donaublue: '#009FE3',
-      thd_grey: '#6F6F6E',
+      main: '#1A4273',
+      secondary: '#009FE3',
+      lightShade: '#D3D2C8',
+      darkShade: '#12151A',
+      darkAccent: '#4973B1',
+
       thd_ai_red: '#E73D55',
       white: '#ffffff',
       black: '#1A1A1A'

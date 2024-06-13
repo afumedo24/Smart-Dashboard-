@@ -5,20 +5,57 @@ import mensaInstance from '../services/axios/axios.config'
 
 export const useMensaStore = defineStore('mensa', () => {
   // this is the state of the store
-  const menu = ref<Menu[]>([])
+  const menus = ref<Menu[]>([])
+  const date = ref<Date>(new Date())
 
   // this is the getter of the store
-  const getMenu = computed(() => menu.value)
+  const getMenu = computed(() => menus.value)
+  const getDate = computed(
+    () => `${date.value.getDate()}.${date.value.getMonth() + 1}.${date.value.getFullYear()}`
+  )
+
+  const getDateForAPI = computed(
+    () => `${date.value.getFullYear()}-${date.value.getMonth() + 1}-${date.value.getDate()}`
+  )
 
   // this is the action of the store
   async function fetchMenu() {
     try {
-      const response = await mensaInstance.get<Menu[]>('/')
-      menu.value = response.data
+      const response = await mensaInstance.get<Menu[]>(`/${getDateForAPI.value}/meals`)
+      menus.value = response.data
+      console.log('Menu fetched: ', response.data)
     } catch (error) {
       console.error('Error fetching Menu: ', error)
-      menu.value = []
+      menus.value = []
     }
   }
-  return { menu, getMenu, fetchMenu }
+
+  function setDate(newDate: Date) {
+    date.value = newDate
+  }
+
+  function setDateToPrevious() {
+    const storedDate = date.value
+    storedDate.setDate(storedDate.getDate() - 1)
+    console.log(storedDate)
+    date.value = new Date(storedDate)
+  }
+  function setDateToNext() {
+    const storedDate = date.value
+    storedDate.setDate(storedDate.getDate() + 1)
+    console.log(storedDate)
+    date.value = new Date(storedDate)
+  }
+
+  return {
+    menus,
+    getMenu,
+    fetchMenu,
+    date,
+    getDate,
+    setDate,
+    setDateToPrevious,
+    setDateToNext,
+    getDateForAPI
+  }
 })
