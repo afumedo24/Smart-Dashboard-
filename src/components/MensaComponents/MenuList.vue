@@ -10,7 +10,7 @@
 
 <template>
   <!-- The Background for the List -->
-  <div class="flex-row bg-lightShade rounded-xl px-6 py-2 md:px-20 md:py-10 font-saira">
+  <div class="flex-row bg-lightShade rounded-xl px-6 py-2 md:px-20 md:py-10">
     <div class="flex justify-between items-center">
       <!-- left arrow for setting the date to the previous day -->
       <v-icon

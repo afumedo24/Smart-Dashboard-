@@ -1,6 +1,6 @@
 <template>
   <div class="mt-20 md:mt-[88px]">
-    <div class="md:flex font-saira py-10 px-10 ml-16">
+    <div class="md:flex py-10 px-10 ml-16">
       <!-- The Title and Subtitle with Button -->
       <div class="flex-row w-1/3 mt-14">
         <!-- Title -->

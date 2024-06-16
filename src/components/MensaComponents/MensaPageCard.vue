@@ -1,5 +1,5 @@
 <template>
-  <div class="flex font-saira justify-center items-center md:justify-normal">
+  <div class="flex justify-center items-center md:justify-normal">
     <div class="flex-col md:mt-20">
       <p class="md:pt-2 text-md md:text-lg lg:text-xl text-center md:text-left text-lightShade">
         THD Mensa

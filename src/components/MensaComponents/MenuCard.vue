@@ -21,8 +21,8 @@
 -->
 <script setup lang="ts">
 // import the type of Menu
-import { type Menu } from '../../services/types/MensaMenu.type'
+import { type IMenu } from '../../services/types/MensaMenu.type'
 
 // get the Props from the parent component
-const props = defineProps<{ menu: Menu }>()
+const props = defineProps<{ menu: IMenu }>()
 </script>

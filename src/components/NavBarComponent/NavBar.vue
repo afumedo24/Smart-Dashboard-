@@ -55,7 +55,7 @@ const route = useRoute() // Access the current route
         <li v-for="link in navLinks" :key="link.text" class="md:ml-8 my-7 md:my-0">
           <RouterLink :to="link.path">
             <p
-              class="font-saira font-medium cursor-pointer hover:text-darkAccent text-lg md:text-xl lg:text-2xl"
+              class="font-medium cursor-pointer hover:text-darkAccent text-lg md:text-xl lg:text-2xl"
               :class="
                 link.path === route.path
                   ? 'text-darkShade underline underline-offset-8'
