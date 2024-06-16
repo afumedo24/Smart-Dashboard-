@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
-
+import router from '../../router'
 const isOpen = ref(false) // Ref for toggling the mobile menu
 
 const toggleMenu = () => {
@@ -36,7 +36,11 @@ const route = useRoute() // Access the current route
     <div class="md:px-10 py-8 px-7 md:flex justify-between items-center bg-main text-white">
       <!-- Logo -->
 
-      <img src="../../assets/thd_logo_weis.png" class="h-10 md:h-11 lg:h-14 cursor-pointer" />
+      <img
+        @click="router.push('/')"
+        src="../../assets/thd_logo_weis.png"
+        class="h-10 md:h-11 lg:h-14 cursor-pointer"
+      />
 
       <!-- Burger Menu -->
       <div class="fixed right-8 top-8 cursor-pointer md:hidden" @click="toggleMenu">
@@ -64,6 +68,7 @@ const route = useRoute() // Access the current route
         </li>
         <li class="md:ml-8 my-7 md:my-0">
           <button
+            @click="router.push('/login')"
             class="bg-secondary text-white py-2 px-6 rounded-lg text-lg md:text-xl lg:text-2xl md:py-3 md:px-8"
           >
             Login

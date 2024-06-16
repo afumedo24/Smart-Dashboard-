@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref } from 'vue'
+import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import DatePicker from 'vue3-datepicker'
 import { useMensaStore } from '../../stores/MensaStore'

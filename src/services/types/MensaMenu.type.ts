@@ -9,7 +9,7 @@ interface Preis {
   others: number | null
 }
 
-export interface Menu {
+export interface IMenu {
   category: string
   id: number
   name: string

@@ -1,11 +1,11 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { type Menu } from '../services/types/MensaMenu.type'
+import { type IMenu } from '../services/types/MensaMenu.type'
 import mensaInstance from '../services/axios/axios.config' // import the axios instance for the Mensa API
 
 export const useMensaStore = defineStore('mensa', () => {
   // this is the state of the store
-  const menus = ref<Menu[]>([])
+  const menus = ref<IMenu[]>([])
   const date = ref<Date>(new Date())
 
   // this is the getter of the store
@@ -21,7 +21,7 @@ export const useMensaStore = defineStore('mensa', () => {
   // this is the action of the store
   async function fetchMenu() {
     try {
-      const response = await mensaInstance.get<Menu[]>(`/${getDateForAPI.value}/meals`)
+      const response = await mensaInstance.get<IMenu[]>(`/${getDateForAPI.value}/meals`)
       menus.value = response.data
       // console.log('Menu fetched: ', response.data) delete this later
     } catch (error) {

@@ -31,17 +31,12 @@ const router = createRouter({
     {
       path: '/settings',
       name: 'settings',
-      component: () => import('../views/LoginPage.vue')
+      component: SettingsPage
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginPage.vue')
-    },
-    {
-      path: '/userform',
-      name: 'userform',
-      component: () => import('../views/UserFormPage.vue')
     }
   ]
 })
