@@ -9,7 +9,6 @@ export const useMensaStore = defineStore('mensa', () => {
   const date = ref<Date>(new Date())
 
   // this is the getter of the store
-  const getMenu = computed(() => menus.value)
   const getDate = computed(
     () => `${date.value.getDate()}.${date.value.getMonth() + 1}.${date.value.getFullYear()}`
   )
@@ -48,7 +47,6 @@ export const useMensaStore = defineStore('mensa', () => {
 
   return {
     menus,
-    getMenu,
     fetchMenu,
     date,
     getDate,

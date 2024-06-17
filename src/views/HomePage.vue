@@ -1,19 +1,23 @@
 <template>
   <div class="mt-20 md:mt-[88px]">
-    <p class="mt-20 p-20">
+    <p class="mt-20 p-20"></p>
+    <div class="w-[800px] h-[480px]">
+      <temperature-card />
+    </div>
+    <!-- 
       {{ weatherData.temperature }}°C, {{ weatherData.humidity }}%
     </p>
     <p v-for="newsData in newsData" :key="newsData">
       <a :href=newsData.url > {{ newsData.title }} </a> 
     </p>
+    -->
   </div>
 </template>
 
 <script setup>
-import TempAndHum from '../components/TempAndHum.vue'
-import axios from 'axios'
-import { ref, onMounted } from 'vue'
+import TemperatureCard from '../components/SensorComponent/TemperatureCard.vue'
 
+/*
 const weatherData = ref([])
 const newsData = ref([])
 
@@ -36,5 +40,6 @@ onMounted(() => {
     .catch((error) => {
       console.log(error)
     })
-})
+}) 
+*/
 </script>

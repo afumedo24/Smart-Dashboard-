@@ -1,11 +1,4 @@
 <template>
-  <!--  position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5)-->
   <div v-if="isOpen" class="fixed z-[9998] top-0 left-0 w-full h-full bg-black bg-opacity-50">
     <div
       class="w-[330px] md:w-[500px] h-[260px] md:h-[300px] mx-auto my-[150px] p-5 md:p-8 bg-white rounded-md shadow-md flex flex-col items-center"
