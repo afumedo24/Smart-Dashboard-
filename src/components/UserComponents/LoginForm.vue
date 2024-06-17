@@ -18,8 +18,14 @@
     <button @click="handleLogin()" class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2">
       Login
     </button>
+    <p
+      @click="router.push('/register')"
+      class="mb-2 p-2 text-center text-sm font-light text-darkShade hover:underline cursor-pointer"
+    >
+      Register
+    </p>
 
-    <p class="mt-3 text-thd_ai_red">{{ errorMsg }}</p>
+    <p class="text-thd_ai_red">{{ errorMsg }}</p>
   </div>
 </template>
 
@@ -34,7 +40,6 @@ const { user, errorMsg } = storeToRefs(userStore)
 const handleLogin = async () => {
   try {
     await userStore.login()
-    router.push('/')
   } catch (error) {
     console.log('Error: ', error)
   }
