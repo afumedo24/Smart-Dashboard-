@@ -5,16 +5,19 @@
     <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">User Form</h2>
     <input
       type="text"
+      v-model="user.username"
       placeholder="Username"
       class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
     />
     <input
       type="email"
+      v-model="user.email"
       placeholder="Email"
       class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
     />
     <input
       type="password"
+      v-model="user.password"
       placeholder="Password"
       class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
     />
@@ -29,4 +32,15 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useUserStore } from '../../stores/UserStore'
+import { storeToRefs } from 'pinia'
+
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
+
+onMounted(() => {
+  userStore.fetchUser()
+})
+</script>

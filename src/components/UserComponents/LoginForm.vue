@@ -5,18 +5,38 @@
     <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">User Login</h2>
     <input
       type="text"
+      v-model="user.username"
       placeholder="Username"
       class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
     />
     <input
       type="password"
+      v-model="user.password"
       placeholder="Password"
       class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
     />
-    <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2">Login</button>
+    <button @click="handleLogin()" class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2">
+      Login
+    </button>
 
-    <p class="text-thd_ai_red">Here comes the Error messgaes</p>
+    <p class="mt-3 text-thd_ai_red">{{ errorMsg }}</p>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserStore } from '../../stores/UserStore'
+import { storeToRefs } from 'pinia'
+import router from '../../router'
+
+const userStore = useUserStore()
+const { user, errorMsg } = storeToRefs(userStore)
+
+const handleLogin = async () => {
+  try {
+    await userStore.login()
+    router.push('/')
+  } catch (error) {
+    console.log('Error: ', error)
+  }
+}
+</script>

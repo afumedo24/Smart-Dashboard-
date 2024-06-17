@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { type IMenu } from '../services/types/MensaMenu.type'
-import mensaInstance from '../services/axios/axios.config' // import the axios instance for the Mensa API
+import mensaInstance from '../services/axios/mensa.config' // import the axios instance for the Mensa API
 
 export const useMensaStore = defineStore('mensa', () => {
   // this is the state of the store

@@ -8,27 +8,6 @@
   The $route.path is used to determine the active route and apply styling accordingly.
 -->
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute, RouterLink } from 'vue-router'
-import router from '../../router'
-const isOpen = ref(false) // Ref for toggling the mobile menu
-
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value
-}
-
-// Define navigation links
-const navLinks = [
-  { text: 'Home', path: '/' },
-  { text: 'Mensa', path: '/mensa' },
-  { text: 'Sensor', path: '/sensor' },
-  { text: 'Settings', path: '/settings' }
-]
-
-const route = useRoute() // Access the current route
-</script>
-
 <!-- z-index added for the menu to overlay other stuff  -->
 
 <template>
@@ -78,3 +57,24 @@ const route = useRoute() // Access the current route
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRoute, RouterLink } from 'vue-router'
+import router from '../../router'
+const isOpen = ref(false) // Ref for toggling the mobile menu
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+}
+
+// Define navigation links
+const navLinks = [
+  { text: 'Home', path: '/' },
+  { text: 'Mensa', path: '/mensa' },
+  { text: 'Sensor', path: '/sensor' },
+  { text: 'Settings', path: '/settings' }
+]
+
+const route = useRoute() // Access the current route
+</script>
