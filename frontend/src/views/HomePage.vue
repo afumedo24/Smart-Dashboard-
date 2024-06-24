@@ -1,45 +1,61 @@
 <template>
-  <div class="mt-20 md:mt-[88px]">
-    <p class="mt-20 p-20"></p>
-    <div class="w-[800px] h-[480px]">
-      <temperature-card />
-    </div>
-    <!-- 
-      {{ weatherData.temperature }}°C, {{ weatherData.humidity }}%
-    </p>
-    <p v-for="newsData in newsData" :key="newsData">
-      <a :href=newsData.url > {{ newsData.title }} </a> 
-    </p>
-    -->
+  <div class="mt-[150px] md:mt-[120px]">
+   
+    <GridLayout 
+      v-model:layout="layout"
+      :col-num="12"
+      :row-height="30"
+      :is-draggable="false"
+      :is-resizable="false"
+      :responsive="true"
+      vertical-compact
+      use-css-transforms
+    >
+ 
+      <template #item="{ item }">
+        <div class="bg-secondary p-4">
+          <component :is="getComponent(item.i)" />
+        </div>
+      </template>
+    </GridLayout>
   </div>
 </template>
 
-<script setup>
-import TemperatureCard from '../components/SensorComponent/TemperatureCard.vue'
+<script setup lang="ts">
+import { ref } from 'vue';
+import TemperatureCard from '@/components/SensorComponent/TemperatureCard.vue';
+import MenuList from '@/components/MensaComponents/MenuList.vue';
+import { GridLayout } from 'grid-layout-plus';
 
-/*
-const weatherData = ref([])
-const newsData = ref([])
+// Define the layout with unique ids
+const layout = ref([
+  { x: 0, y: 0, w: 3, h: 2, i: '0' }, // TemperatureCard component
+  { x: 4, y: 0, w: 6, h: 10, i: '7' }, // TemperatureCard component
+  { x: 10, y: 0, w: 3, h: 2, i: '7' }, // Another component placeholder
+  { x: 0, y: 6, w: 2, h: 1, i: '7' }, // TemperatureCard component
+  { x: 4, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
+  { x: 10, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
+]); 
 
-onMounted(() => {
-  axios
-    .get('http://localhost:2424/api/weather')
-    .then((response) => {
-      console.log(response.data)
-      weatherData.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  axios
-    .get('http://localhost:2424/api/news')
-    .then((response) => {
-      console.log(response.data)
-      newsData.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-}) 
-*/
+// Function to map grid item id to component
+const getComponent = (id: string) => {
+  switch (id) {
+    case '0':
+      return TemperatureCard;
+    case '1':
+      return TemperatureCard;
+    case '2':
+      return TemperatureCard;
+    case '3':
+      return MenuList;
+    case '4':
+      return TemperatureCard;
+    case '5':
+      return TemperatureCard;
+    default:
+      return null;
+  }
+};
 </script>
+
+
