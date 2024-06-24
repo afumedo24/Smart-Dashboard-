@@ -1,27 +1,41 @@
-import MapChart from 'vue-map-chart';
 <template>
-  <div class="mt-20 py-8">
-    <Pie :data="data" :options="options" />
+  <div>
+    <button @click="increment">Increment Data</button>
+    <canvas ref="chartCanvas"></canvas>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
-import { Pie } from 'vue-chartjs'
+import { ref, onMounted } from 'vue';
+import {Chart} from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+const chartValues = ref([0.3, 1]);
 
-const data = {
-  labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs', 'Ahmed'],
-  datasets: [
-    {
-      backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16', '#FF5733'],
-      data: [40, 20, 80, 10, 60]
-    }
-  ]
+function increment() {
+  chartValues[0] += 0.1;
+  if (chartValues[0] > 1) {
+    chartValues[0] = 0;
+  }
 }
 
-const options = {
-  responsive: true
-}
+onMounted(() => {
+  const ctx = document.getElementById('chartCanvas') as HTMLCanvasElement;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February'],
+      datasets: [
+        {
+          label: 'My First Dataset',
+          backgroundColor: '#42A5F5',
+          data: chartValues,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+});
 </script>
