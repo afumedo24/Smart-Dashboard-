@@ -24,17 +24,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import TemperatureCard from '@/components/SensorComponent/TemperatureCard.vue';
+import NewsComponent from '@/components/NewsCard.vue';
 import MenuList from '@/components/MensaComponents/MenuList.vue';
 import { GridLayout } from 'grid-layout-plus';
 
 // Define the layout with unique ids
 const layout = ref([
   { x: 0, y: 0, w: 3, h: 2, i: '0' }, // TemperatureCard component
-  { x: 4, y: 0, w: 6, h: 10, i: '7' }, // TemperatureCard component
-  { x: 10, y: 0, w: 3, h: 2, i: '7' }, // Another component placeholder
-  { x: 0, y: 6, w: 2, h: 1, i: '7' }, // TemperatureCard component
-  { x: 4, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
-  { x: 10, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
+  { x: 4, y: 0, w: 3, h: 2, i: '1' }, // TemperatureCard component
+  //{ x: 10, y: 0, w: 3, h: 2, i: '7' }, // Another component placeholder
+  //{ x: 0, y: 6, w: 2, h: 1, i: '7' }, // TemperatureCard component
+  //{ x: 4, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
+  //{ x: 10, y: 6, w: 2, h: 2, i: '7' }, // Another component placeholder
 ]); 
 
 // Function to map grid item id to component
@@ -43,7 +44,7 @@ const getComponent = (id: string) => {
     case '0':
       return TemperatureCard;
     case '1':
-      return TemperatureCard;
+      return NewsComponent;
     case '2':
       return TemperatureCard;
     case '3':
