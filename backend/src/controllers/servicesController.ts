@@ -10,7 +10,14 @@ export const getNews = async (req:Request, res:Response) => {
     try {
         const response = await fetchNews();
         // return only the first 5 news
-        const news = response.slice(0, 5)
+        const news = lodash.chain(response)
+                            .take(5)
+                            .map((item) => ({
+                                title: item.title,
+                                author: item.author,
+                                url: item.url,
+                                }))
+                            .value();
         return res.status(200).json(news); 
     } catch (error) {
         logger.error(error);
