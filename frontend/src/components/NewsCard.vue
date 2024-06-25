@@ -7,7 +7,7 @@
             </div>
             <div v-if="currentNews" class="text-center p-2" @click="openNewsUrl()" :key="currentIndex">
                 <h3 class="text-2xl font-medium mb-2">News </h3>
-                <p class="text-xl  text-justify hover:underline">{{ currentNews.title }}</p>
+                <p class="text-xl hover:underline">{{ currentNews.title }}</p>
             </div>
             <div v-else class="text-center">
                 <p class="text-lg font-light">Loading...</p>
