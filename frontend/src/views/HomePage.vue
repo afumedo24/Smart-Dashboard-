@@ -69,25 +69,25 @@ const presetLayouts = reactive({
     { x: 0, y: 0, w: 2, h: 2, i: '0' },
     { x: 2, y: 0, w: 4, h: 2, i: '1' },
     { x: 6, y: 0, w: 2, h: 1, i: '2' },
-    { x: 0, y: 2, w: 2, h: 3, i: 'Cafe' },
-    { x: 2, y: 2, w: 4, h: 2, i: 'Chart2' },
-    { x: 6, y: 1, w: 2, h: 4, i: 'Other' },
+    { x: 0, y: 2, w: 2, h: 3, i: '3' },
+    { x: 2, y: 2, w: 4, h: 2, i: '4' },
+    { x: 6, y: 1, w: 2, h: 4, i: '5' },
   ],
   md: [
     { x: 0, y: 0, w: 2, h: 2, i: '0' },
     { x: 2, y: 0, w: 4, h: 2, i: '1' },
     { x: 6, y: 0, w: 2, h: 1, i: '2' },
-    { x: 0, y: 2, w: 2, h: 3, i: 'Cafe' },
-    { x: 2, y: 2, w: 4, h: 2, i: 'Chart2' },
-    { x: 6, y: 1, w: 2, h: 4, i: 'Other' },
+    { x: 0, y: 2, w: 2, h: 3, i: '3' },
+    { x: 2, y: 2, w: 4, h: 2, i: '4' },
+    { x: 6, y: 1, w: 2, h: 4, i: '5' },
   ],
   sm: [
     { x: 0, y: 0, w: 6, h: 2, i: '0' },
     { x: 0, y: 2, w: 6, h: 2, i: '1' },
     { x: 0, y: 4, w: 6, h: 1, i: '2' },
-    { x: 0, y: 5, w: 6, h: 3, i: 'Cafe' },
-    { x: 0, y: 8, w: 6, h: 2, i: 'Chart2' },
-    { x: 0, y: 10, w: 6, h: 4, i: 'Other' },
+    { x: 0, y: 5, w: 6, h: 3, i: '3' },
+    { x: 0, y: 8, w: 6, h: 2, i: '4' },
+    { x: 0, y: 10, w: 6, h: 4, i: '5' },
   ],
 });
 
@@ -106,11 +106,11 @@ const getComponent = (id: string) => {
     case '2':
       return TemperatureCard;
     case '3':
-      return MenuList;
+      return 'Cafe';
     case '4':
-      return TemperatureCard;
+      return 'Chart2';
     case '5':
-      return TemperatureCard;
+      return 'Other';
     default:
       return null;
   }
