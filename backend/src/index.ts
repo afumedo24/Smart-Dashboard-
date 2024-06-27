@@ -6,8 +6,8 @@ import connectDB from '../utils/db';
 import cors from 'cors';
 
 const PORT = config.get<number>('port');
-
 const app = express();
+
 app.use(express.json(), express.urlencoded({ extended: true }), cors());
 app.use('/api', router());
 
