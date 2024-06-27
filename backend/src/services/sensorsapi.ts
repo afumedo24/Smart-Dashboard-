@@ -1,25 +1,23 @@
 import axios from "axios"
-import config from "config"
 import logger from "../../utils/logger"
+import {setActiveSensor} from "../../utils/helpers"
 
 
-const SENSORS_URI = config.get<string>('thd_sensor1_uri');
-const SENSORS_URI2 = config.get<string>('thd_sensor2_uri');
-
-export const fetchSensors_01 = async () => {
+export const fetchSensor = async (url: string) => {
     try {
-        const response = await axios.get(SENSORS_URI);
-        logger.info("Sensor01 fetched successfully");
+        const response = await axios.get(url);
+        logger.info("Sensor fetched successfully");
         return response.data;
     } catch (error) {
         logger.error(error);
     }
 }
 
-export const fetchSensors_02 = async () => {
+export const fetchSensorLoop = async (url: string) => {
+    setActiveSensor();
     try {
-        const response = await axios.get(SENSORS_URI2);
-        logger.info("Sensor02 fetched successfully");
+        const response = await axios.get(url);
+        logger.info("Sensor fetched successfully");
         return response.data;
     } catch (error) {
         logger.error(error);
