@@ -9,10 +9,11 @@
 
 <script setup lang="ts">
 import { LineChart, useLineChart } from "vue-chart-3";
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import type { Ref } from 'vue';       
 import { Chart, registerables } from "chart.js";
 import type { ChartData, ChartOptions, } from "chart.js";
+
 
 Chart.register(...registerables);
 
@@ -103,10 +104,9 @@ function updateGraph() {
     }
 
     dataValues.value.push(newEntry);
-    dataLabels.value.push(i);
-
-    //dataValues2.value.push(newEntry2);
-    
+    dataLabels.value.push(i);  
 }
+
+
 
 </script>
