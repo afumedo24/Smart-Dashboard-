@@ -1,0 +1,16 @@
+{
+    "sensors": [
+        {
+        "id": 1,
+        "name": "Shelly Sensor 1",
+        "isActive": false
+        },
+        {
+        "id": 2,
+        "name": "Shelly Sensor 2",
+        "isActive": true
+        }
+    ],
+    "frequency": 10
+
+}
