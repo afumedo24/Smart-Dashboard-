@@ -18,6 +18,7 @@ const getSensor = async () => {
         logger.info(`Sensor ${sensor[0].id} fetched successfully`);
         const data = { "labels": "Current", "values": response.current };
         // Push data to all connected clients
+        //console.log(clients)
         clients.forEach(client => {
             client.send(JSON.stringify(data));
             logger.info(`Sensor Data sent to client over websocket`);
@@ -42,7 +43,7 @@ export const startFetchingData = async (req:Request, res:Response) => {
         }
         isRunning = false;
         shouldStop = false; // Reset the flag for future use
-        logger.info('Sensor Data loop started.');
+        logger.info('Sensor Data loop stoped.');
 
         return res.status(200).send({message: 'Sensor Data loop started.'});
     } catch (error) {
