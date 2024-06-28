@@ -14,6 +14,7 @@ dist-ssr
 coverage
 *.local
 
+config/settings.json
 TO-DO
 run_db.sh
 
