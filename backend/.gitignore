@@ -15,7 +15,6 @@ coverage
 *.local
 
 config/settings.json
-TO-DO
 run_db.sh
 
 # Editor directories and files
