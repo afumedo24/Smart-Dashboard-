@@ -1,9 +1,10 @@
 <template>
     <div class="mt-[120px]">
-        <button @click="updateGraph">Update Graph</button>
+        <button class=" m-4 p-5 text-xl bg-main" @click="start">Start</button>
+        <button class=" m-4 p-5 text-xl bg-main" @click="stop">Stop</button>
     </div>
     <div class="">
-        <LineChart ref="linechart" :chartData="chartDatas" :options="chartOption"/>
+        <LineChart ref="linechart" :chartData="chartDatas" :options="chartOption" />
     </div>
 </template>
 
@@ -13,6 +14,13 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import type { Ref } from 'vue';       
 import { Chart, registerables } from "chart.js";
 import type { ChartData, ChartOptions, } from "chart.js";
+import axios from 'axios';
+import { useSensorStore } from '../../stores/SensorStore';
+import { storeToRefs } from 'pinia';
+
+
+const sensorStore = useSensorStore();
+const { sensorData, frequency } = storeToRefs(sensorStore);
 
 
 Chart.register(...registerables);
@@ -53,10 +61,17 @@ const chartOption = computed<ChartOptions<'line'>>(() => ({
     responsive: true,
     plugins: {
         legend: {
-            display: false,
+            display: true,
+            position: 'top', // Position of the legend. Can be 'top', 'left', 'bottom', or 'right'
+            labels: {
+                color: 'rgb(255, 99, 132)', // Color of the labels
+                font: {
+                    size: 14, // Font size of the labels
+                },
+            },
         },
         title: {
-            display: true,
+            display: false,
             text: "Sensor Data from Sensor1",
         },
     },
@@ -65,14 +80,14 @@ const chartOption = computed<ChartOptions<'line'>>(() => ({
             display: true,
             title: {
                 display: true,
-                text: "Time in seconds",
+                text: "Time in s",
             },
         },
         y: {
             display: true,
             title: {
                 display: true,
-                text: "Current in mA",
+                text: "Current in A",
             },
         },
     },
@@ -86,27 +101,38 @@ const { lineChartProps, lineChartRef } = useLineChart({
 let i = 0;
 
 function updateGraph() {
-    i++;
-
-    const newEntry = {
-        x: i,
-        y: Math.floor(Math.random() * 100),
-    };/*
-    const newEntry2 = {
-        x: i,
-        y: Math.floor(i * 10),
-    };*/
-
-    if(i > 20)
-    {
-        dataValues.value.shift();
-        dataLabels.value.shift();
-    }
-
-    dataValues.value.push(newEntry);
-    dataLabels.value.push(i);  
+    i = i + 4
+    axios.get('http://localhost:2424/api/sensor1')
+        .then((response) => {
+            console.log(response.data);
+            const newEntry = {
+                x: i,
+                y: response.data.values,
+            };
+            if (i > 20) {
+                dataValues.value.shift();
+                dataLabels.value.shift();
+            }
+            dataValues.value.push(newEntry);
+            dataLabels.value.push(i);
+            i++;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
-
+let intervalId: number | null = null;
+const start = () => {
+    if (intervalId === null) {
+        intervalId = window.setInterval(updateGraph, 5000);
+    }
+}
+const stop = () => {
+    if (intervalId !== null) {
+        window.clearInterval(intervalId);
+        intervalId = null;
+    }
+}
 
 
 </script>
