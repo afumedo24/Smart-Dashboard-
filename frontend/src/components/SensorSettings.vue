@@ -3,12 +3,12 @@
         class="flex flex-col items-center justify-center mt-12 bg-lightShade rounded-xl shadow-md p-10 md:w-[600px] mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">Sensor Settings</h2>
 
-        <div v-if="!allsensors && !frequency" class="text-center">
+        <div v-if="!allSensors && !frequency" class="text-center">
             <p class="text-center text-2xl md:text-4xl lg:text-6xl p-8 md:p-16">Loading...</p>
         </div>
 
         <div v-else class="">
-            <div v-for="sensor in allsensors" :key="sensor.id" class="my-2 ">
+            <div v-for="sensor in allSensors" :key="sensor.id" class="my-2 ">
                 <input type="checkbox" :id="`checkbox-${sensor.id}`" v-model="sensor.isActive"
                     @change="handleCheckboxChange(sensor.id)" :disabled="!isEditing" />
                 <label :for="`checkbox-${sensor.id}`" class="w-full p-4 mb-4 md:text-xl ">
@@ -35,19 +35,18 @@ import { storeToRefs } from 'pinia';
 
 // Fetch sensor store and reactive properties
 const sensorStore = useSensorStore();
-const { allsensors, frequency } = storeToRefs(sensorStore);
+const { allSensors, frequency } = storeToRefs(sensorStore);
 
 const isEditing = ref(false);
 
 onMounted(async () => {
     await sensorStore.fetchSensorSettings();
-    console.log(allsensors);
 });
 
 // Method to handle checkbox selection
 const handleCheckboxChange = (id: number) => {
     // Iterate over all sensors and update their isActive property
-    allsensors.value.forEach(sensor => {
+    allSensors.value.forEach(sensor => {
         sensor.isActive = sensor.id === id;
     });
 };
@@ -56,9 +55,7 @@ const handleCheckboxChange = (id: number) => {
 const toggleEditing = () => {
     if (isEditing.value) {
         // Handle the submit action
-        console.log('sensors' + allsensors.value);
-        console.log('freq' + frequency.value);
-        
+        sensorStore.updateSensorSettings();
     }
     isEditing.value = !isEditing.value;
 };
