@@ -8,5 +8,3 @@
 <script setup>
 import MenuPageCard from '../components/MensaComponents/MensaPageCard.vue'
 </script>
-
-/Users/abdaalahmed/Desktop/WP2/smarthome_frontend/src/components/MensaComponents/Mensa/MensaPageCard.vue

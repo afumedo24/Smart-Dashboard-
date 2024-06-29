@@ -49,9 +49,6 @@
   </div>
 </template>
 
-<!-- 
-   
--->
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import MenuCardComponent from './MenuCard.vue'
@@ -62,6 +59,7 @@ import { storeToRefs } from 'pinia'
 const loading = ref(true)
 const mensaStore = useMensaStore()
 const { menus } = storeToRefs(mensaStore)
+
 onMounted(() => {
   mensaStore.fetchMenu()
   loading.value = false
