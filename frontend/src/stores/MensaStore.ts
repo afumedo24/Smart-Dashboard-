@@ -22,7 +22,7 @@ export const useMensaStore = defineStore('mensa', () => {
     try {
       const response = await mensaInstance.get<IMenu[]>(`/${getDateForAPI.value}/meals`)
       menus.value = response.data
-      // console.log('Menu fetched: ', response.data) delete this later
+
     } catch (error) {
       console.error('Error fetching Menu: ', error)
       menus.value = []

@@ -15,7 +15,6 @@ export const useNewsStore = defineStore('news', () => {
     try {
       const response = await myRestInstance.get(`/services/news`)
       news.value = response.data
-      console.log('News fetched: ', response.data)
     } catch (error) {
       console.error('Error fetching News: ', error)
     }
