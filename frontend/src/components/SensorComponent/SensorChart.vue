@@ -58,7 +58,7 @@ const chartOption = computed<ChartOptions<'line'>>(() => ({
             display: true,
             title: {
                 display: true,
-                text: "Time",
+                text: "Time in s",
             },
         },
         y: {
