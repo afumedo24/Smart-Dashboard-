@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-[120px] md:mt-[140px] flex justify-center space-x-4">
+    <div class="mt-[120px] md:mt-[140px] flex items-center justify-center space-x-4">
         <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
             @click="sensorStore.start()">Start</button>
         <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
