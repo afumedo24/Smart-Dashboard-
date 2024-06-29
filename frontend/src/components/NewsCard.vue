@@ -6,8 +6,8 @@
                 <v-icon name="md-keyboardarrowleft" class="w-10 md:w-12 lg:w-14" scale="2" fill="black" />
             </div>
             <div v-if="currentNews" class="text-center p-2" @click="openNewsUrl()" :key="currentIndex">
-                <h3 class="text-2xl font-medium mb-2">News </h3>
-                <p class="text-xl hover:underline">{{ currentNews.title }}</p>
+                <h3 class="text-2xl text-darkAccent font-bold mb-2">News </h3>
+                <p class="text-xl hover:underline hover:text-darkAccent">{{ currentNews.title }}</p>
             </div>
             <div v-else class="text-center">
                 <p class="text-lg font-light">Loading...</p>

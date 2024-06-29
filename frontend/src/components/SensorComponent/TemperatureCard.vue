@@ -5,13 +5,16 @@ import { useWeatherStore } from '../../stores/WeatherStore';
       <div v-if="weather" class="flex justify-between">
         <div class="flex justify-between items-center">
           <img class="" :src="weather?.weather_icon" alt="Temperature icon" />
-          <p class="text-3xl -ml-1">{{ weather?.temperature }} °C</p>
+          <p class="text-3xl ml-1 font-bold ">{{ weather?.temperature }} °C</p>
         </div>
-        <!-- <hr class="w-[20%] mt-10 rotate-90 bg-darkShade" /> -->
-        <div class="flex-col items-center p-4">
-          <p class="text-lg">Humidty: {{ weather?.humidity }}%</p>
-          <p class="text-lg">Sunrise: {{ weather?.sunrise }} Uhr</p>
-          <p class="text-lg">Sunset: {{ weather?.sunset }} Uhr</p>
+        <div class="flex-col items-center p-4 font-medium ">
+          <p class="text-lg text-darkAccent">Humidty: <label class="text-black font-normal"> {{ weather?.humidity }}
+              %</label>
+          </p>
+          <p class="text-lg text-darkAccent">Sunrise: <label class="text-black font-normal"> {{ weather?.sunrise }} Uhr
+            </label></p>
+          <p class="text-lg text-darkAccent">Sunset: <label class="text-black font-normal"> {{ weather?.sunset }} Uhr
+            </label></p>
         </div>
       </div>
       <div v-else class="text-center">
