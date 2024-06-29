@@ -11,8 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { LineChart, useLineChart } from "vue-chart-3";
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { LineChart } from "vue-chart-3";
+import { computed, onMounted, onUnmounted } from 'vue';
 import { Chart, registerables } from "chart.js";
 import type { ChartData, ChartOptions } from "chart.js";
 import { useSensorStore } from '../../stores/SensorStore';
@@ -84,8 +84,4 @@ onUnmounted(() => {
     sensorStore.stop();
 });
 
-// Watch the sensorData to trigger updates on the chart
-watch(sensorData, () => {
-    // Force update of the chart (if needed)
-});
 </script>
