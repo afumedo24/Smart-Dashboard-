@@ -75,6 +75,9 @@ export const useSensorStore = defineStore('sensor', () => {
         try {
             await myRestInstance.put(`/sensor/settings`, newSettings);
             await fetchSensorSettings();
+            sensorData.value = []
+            sensorDataLabels.value = []
+            timer = 0
         } catch (error) {
             console.error('Error updating SensorSettings: ', error);
         }
