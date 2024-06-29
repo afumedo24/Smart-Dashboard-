@@ -9,4 +9,6 @@ export default {
     openweather_uri: 'https://api.openweathermap.org/data/2.5/weather?lat=48.833195&lon=12.961127&appid=1c3798c62ad38097c93c54d0a2640be9&lang=de&units=metric',
     thd_sensor1_uri: 'http://shelly01.th-deg.de/rpc/Switch.GetStatus?id=0',
     thd_sensor2_uri: 'http://shelly02.th-deg.de/rpc/Switch.GetStatus?id=0',
+    finnhub_base_url: 'https://finnhub.io/api/v1',
+    finnhub_api_key: 'cq03bh9r01qkg1bdvabgcq03bh9r01qkg1bdvac0',
 }
