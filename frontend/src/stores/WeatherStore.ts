@@ -13,7 +13,7 @@ export const useWeatherStore = defineStore('weather', () => {
   // this is the action of the store
   async function fetchWeather() {
     try {
-      const response = await myRestInstance.get(`/weather`)
+      const response = await myRestInstance.get(`/services/weather`)
       weather.value = response.data
       console.log('Weather fetched: ', response.data)
     } catch (error) {

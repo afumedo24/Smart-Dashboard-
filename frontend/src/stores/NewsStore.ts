@@ -13,7 +13,7 @@ export const useNewsStore = defineStore('news', () => {
   // this is the action of the store
   async function fetchNews() {
     try {
-      const response = await myRestInstance.get(`/news`)
+      const response = await myRestInstance.get(`/services/news`)
       news.value = response.data
       console.log('News fetched: ', response.data)
     } catch (error) {

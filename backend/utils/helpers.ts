@@ -43,14 +43,6 @@ export const weatherIconURL = (icon: string) => {
     return `https://openweathermap.org/img/wn/${icon}.png`;
 }
 
-
-let SENSORS_URI = '';
-
-const SENSORS_URI1 = config.get<string>('thd_sensor1_uri');
-const SENSORS_URI2 = config.get<string>('thd_sensor2_uri');
-
-
-
 export const setActiveSensor = async () => {
     //Settings JSON file absolute path
     const settingsFilePath = ((process.cwd()) + '/config/settings.json')
