@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-20 py-8">
+  <div class="mt-[120px] py-8 px-6 md:px-32">
     <user-form />
     <sensor-settings />
   </div>

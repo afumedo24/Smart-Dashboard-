@@ -1,12 +1,14 @@
 <template>
-    <div class="mt-[120px] md:mt-[140px] flex items-center justify-center space-x-4">
-        <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
-            @click="sensorStore.start()">Start</button>
-        <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
-            @click="sensorStore.stop()">Stop</button>
-    </div>
-    <div class="mt-8 w-[380px] md:w-[520px] lg:w-[680px] mx-auto">
-        <LineChart ref="linechart" :chartData="chartData" :options="chartOption" />
+    <div class="p-4">
+        <div class="flex items-center justify-center gap-4">
+            <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
+                @click="sensorStore.start()">Start</button>
+            <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
+                @click="sensorStore.stop()">Stop</button>
+        </div>
+        <div class="mt-8 w-[380px] md:w-[520px] lg:w-[680px] mx-auto">
+            <LineChart ref="linechart" :chartData="chartData" :options="chartOption" />
+        </div>
     </div>
 </template>
 

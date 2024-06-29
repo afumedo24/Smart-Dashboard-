@@ -1,8 +1,7 @@
 <template>
-    <div class="w-full h-full relative">
-        <div class="mt-8 w-[480px] md:w-[720px] lg:w-[1080px] mx-auto">
-            <BarChart ref="chart" :chartData="chartData" :options="chartOptions" />
-        </div>
+    <div class="w-[480px] md:w-[720px] lg:w-[1080px] mx-auto bg-lightShade rounded-xl p-4">
+        <p v-if="!stockData" class="text-center text-2xl md:text-4xl lg:text-6xl p-8 md:p-16">Loading...</p>
+        <BarChart v-else ref="chart" :chartData="chartData" :options="chartOptions" />
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col ">
+  <div class="mt-[120px] py-8 px-6 md:px-32">
     <div class="w-[1500px] h-[800px] p-2">
       <SensorComponent />
     </div>
