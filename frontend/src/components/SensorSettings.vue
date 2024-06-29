@@ -7,12 +7,13 @@
             <p class="text-center text-2xl md:text-4xl lg:text-6xl p-8 md:p-16">Loading...</p>
         </div>
 
-        <div v-else class="">
-            <div v-for="sensor in allSensors" :key="sensor.id" class="my-2 ">
+        <div v-else>
+            <div v-for="sensor in allSensors" :key="sensor.id" class="my-2">
                 <input type="checkbox" :id="`checkbox-${sensor.id}`" v-model="sensor.isActive"
                     @change="handleCheckboxChange(sensor.id)" :disabled="!isEditing" />
-                <label :for="`checkbox-${sensor.id}`" class="w-full p-4 mb-4 md:text-xl ">
-                    {{ sensor.name }}</label>
+                <label :for="`checkbox-${sensor.id}`" class="w-full p-4 mb-4 md:text-xl">
+                    {{ sensor.name }}
+                </label>
             </div>
             <div class="w-full mb-4">
                 <label for="frequency-input" class="block text-md font-medium">Frequency</label>
@@ -26,14 +27,11 @@
     </div>
 </template>
 
-
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { useSensorStore } from '../stores/SensorStore';
+import { useSensorStore } from '../stores/SensorStore'
 import { storeToRefs } from 'pinia';
 
-// Fetch sensor store and reactive properties
 const sensorStore = useSensorStore();
 const { allSensors, frequency } = storeToRefs(sensorStore);
 
@@ -45,7 +43,6 @@ onMounted(async () => {
 
 // Method to handle checkbox selection
 const handleCheckboxChange = (id: number) => {
-    // Iterate over all sensors and update their isActive property
     allSensors.value.forEach(sensor => {
         sensor.isActive = sensor.id === id;
     });

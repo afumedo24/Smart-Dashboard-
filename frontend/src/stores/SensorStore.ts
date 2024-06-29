@@ -1,47 +1,95 @@
-import { ref } from 'vue'
-import { defineStore } from 'pinia'
-import myRestInstance from '../services/axios/rest.config'
-import type { SensorData, SensorSettings, Sensors } from '../services/types/Sensor.type'
+import { ref, computed } from 'vue';
+import { defineStore } from 'pinia';
+import myRestInstance from '../services/axios/rest.config';
+import type { SensorData, SensorSettings, Sensors } from '../services/types/Sensor.type';
 
 export const useSensorStore = defineStore('sensor', () => {
-    // this is the state of the store
-    const sensorData = ref<SensorData[]>([])
-    const sensorsSettings = ref<SensorSettings[]>([])
-    const allsensors = ref<Sensors[]>([])
-    const frequency = ref<number>(0)
+    const sensorData = ref<Array<{ x: number; y: number }>>([]);
+    const sensorDataLabels = ref<number[]>([]);
+    const allSensors = ref<Sensors[]>([]);
+    const frequency = ref<number>(5); // default frequency to 5 seconds
 
-    // this is the action of the store
+
+    const activeSensor = computed(() => {
+        const activeSensor = allSensors.value.find((sensor) => sensor.isActive === true);
+        return activeSensor ? activeSensor.name : '';
+    });
+    let timer = 0
+    let intervalId: number | null = null;
+
+    async function fetchCurrentSensorData() {
+        try {
+            if (timer === 0) {
+                    const newEntry = { x: timer, y: 0};
+                    sensorData.value.push(newEntry);
+                    sensorDataLabels.value.push(timer);
+                }
+            if (timer % frequency.value === 0 && timer !== 0) {
+                const response = await myRestInstance.get(`/sensor/1/data`);
+                const newEntry = { x: timer, y: response.data.values };
+                
+                if (timer >= 12) {
+                    sensorData.value.shift();
+                    sensorDataLabels.value.shift();
+                }
+                
+                sensorData.value.push(newEntry);
+                sensorDataLabels.value.push(timer);
+            }
+            timer++;
+        } catch (error) {
+            console.error('Error fetching SensorData: ', error);
+        }
+    }
+
+    const start = () => {
+        if (intervalId === null) {
+            intervalId = window.setInterval(fetchCurrentSensorData, frequency.value * 1000);
+            console.log('Interval started');
+        }
+    };
+
+    const stop = () => {
+        if (intervalId !== null) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+            console.log('Interval stopped');
+        }
+    };
+
     async function fetchSensorSettings() {
         try {
-            const response = await myRestInstance.get(`/sensor/settings`)
-            sensorsSettings.value = response.data
-            allsensors.value = response.data.sensors
-            frequency.value = response.data.frequency
-            console.log('sensors saved: ', allsensors.value)
-            console.log('frequency saved: ', frequency.value)
-            console.log('Sensor Settings fetched: ', sensorsSettings.value)
+            const response = await myRestInstance.get(`/sensor/settings`);
+            allSensors.value = response.data.sensors;
+            frequency.value = response.data.frequency;
         } catch (error) {
-            console.error('Error fetching SensorSettings: ', error)
+            console.error('Error fetching SensorSettings: ', error);
         }
     }
 
     async function updateSensorSettings() {
         const newSettings: SensorSettings = {
-            sensors: allsensors.value,
-            frequency: frequency.value
-        }
+            sensors: allSensors.value,
+            frequency: frequency.value,
+        };
         try {
-            const response = await myRestInstance.put(`/sensor/settings`, newSettings)
-            sensorsSettings.value = response.data
-            allsensors.value = response.data.sensors
-            frequency.value = response.data.frequency
-            console.log('sensors saved: ', allsensors.value)
-            console.log('frequency saved: ', frequency.value)
-            console.log('Sensor Settings updated: ', sensorsSettings.value)
+            await myRestInstance.put(`/sensor/settings`, newSettings);
+            await fetchSensorSettings();
         } catch (error) {
-            console.error('Error updating SensorSettings: ', error)
+            console.error('Error updating SensorSettings: ', error);
         }
     }
 
-    return { sensorData, sensorsSettings, fetchSensorSettings, allsensors, frequency, updateSensorSettings }
-})
+    return {
+        sensorData,
+        sensorDataLabels,
+        allSensors,
+        frequency,
+        activeSensor,
+        fetchCurrentSensorData,
+        start,
+        stop,
+        fetchSensorSettings,
+        updateSensorSettings,
+    };
+});

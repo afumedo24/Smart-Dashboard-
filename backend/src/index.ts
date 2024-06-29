@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json(), express.urlencoded({ extended: true }), cors());
 app.use('/api', router());
 
+
 app.listen(PORT, async () => {   
     logger.info(`Server running on http://localhost:${PORT}/api`)
     await connectDB();

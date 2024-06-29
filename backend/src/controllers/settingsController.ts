@@ -12,7 +12,7 @@ export const sendSettings = async (req:Request, res:Response) => {
         return res.status(200).json(senttingsdata);
     } catch (error) {
         logger.error(error);
-        return res.status(500).json({ message: 'An error occurred while reading the file.' });
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 
@@ -21,11 +21,11 @@ export const updateSettings = async (req:Request, res:Response) => {
         const data = fs.readFileSync(settingsFilePath, 'utf8');
         const settings = JSON.parse(data);
         const newSettings = lodash.merge(settings, req.body);
-        fs.writeFileSync(settingsFilePath, JSON.stringify(newSettings, null, 2));       
+        fs.writeFileSync(settingsFilePath, JSON.stringify(newSettings, null, 2));            
         return res.status(200).json(newSettings);
     } catch (error) {
         logger.error(error);
-        return res.status(500).json({ message: 'An error occurred while reading the file.' });
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 

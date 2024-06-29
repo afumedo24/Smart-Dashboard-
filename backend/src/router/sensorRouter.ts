@@ -1,8 +1,9 @@
 import { Router} from 'express'
-import { startFetchingData, stopFetchingData  } from './../controllers/sensorsController';
+import { getCurrentSensor, getSensors_01 } from './../controllers/sensorsController';
+import { sendSettings, updateSettings } from './../controllers/settingsController';
 
 export default (router:Router ) => {
-    router.get("/sensor/start", startFetchingData )
-    router.get("/sensor/stop", stopFetchingData )
-    router.get("/sensor1", )
+    router.get("/sensor/settings", sendSettings)
+    router.put("/sensor/settings", updateSettings)
+    router.get("/sensor/1/data", getCurrentSensor )
 }
