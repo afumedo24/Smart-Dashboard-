@@ -1,6 +1,6 @@
 Abdaal, Ahmed, 22110413
 
-# Dashboard Application for WP2 
+# Dashboard Application for WP2
 
 [Link to MyGit Repository](https://mygit.th-deg.de/aa10413/wp2-projekt-smarthome)
 
@@ -47,7 +47,7 @@ Follow these steps to install the project:
     ```
 
 ### Backend
-Make sure that the MongoDB server is already running on your local machine.
+Ensure that the MongoDB server is running on your local machine.
 
 1. Move to the backend directory:
     ```bash
@@ -74,55 +74,62 @@ Make sure that the MongoDB server is already running on your local machine.
 3. Start the frontend development server:
     ```bash
     npm run dev
+    ```
 
 ## Basic Usage
 To start the project, follow these steps:
-After starting both applications, look at the output of the frontend terminal. This will display the URL for the frontend, normally `http://localhost:5173`. Open your browser and type in this URL. You will see the homepage (dashboard). 
+
+After starting both applications, check the output of the frontend terminal. This will display the URL for the frontend, typically `http://localhost:5173`. Open your browser and enter this URL to access the homepage (dashboard).
 
 To use the application:
 
-1. Click on the login button at the top right corner of the NavBar.
-2. You will be redirected to the login page. Here, you can register a new user for yourself by clicking on the "Register" link under the login button.
-3. Fill in the required data. Ensure that the password and confirm password fields are identical, or else you cannot register.
-4. After registering, you will be redirected back to the login page. Now, you can log in with your username and password.
-5. Once logged in, you are free to explore the whole app. 
+1. Ensure you are connected to the THD network/VPN.
+2. Click on the login button at the top right corner of the NavBar.
+3. You will be redirected to the login page. Here, you can register a new user by clicking on the "Register" link under the login button.
+4. Fill in the required data. Ensure that the password and confirm password fields match, otherwise registration will fail.
+5. After registering, you will be redirected back to the login page. You can now log in with your username and password.
+6. Once logged in, you are free to explore the app.
 
 ### Key Use Cases
 - **Dashboard**: View the main dashboard after logging in.
-- **Mensa**: Check the menu of Deggendorfer Mensa (todays or a specific day).
-- **Sensors**: View current(strom) data from a Shelly sensor or get market capitalization data from companies.
-- **Settings**: Update your account data or adjust sensor settings, including which one to use and the access frequency.
+- **Mensa**: Check the menu of Deggendorfer Mensa (today's or a specific day).
+- **Sensors**: View current data from a Shelly sensor or get market capitalization data from companies.
+- **Settings**: Update your account data or adjust sensor settings, including which sensors to use and the access frequency.
 
 ## Implementation of the Requests
 This section describes how the various project requirements are implemented:
 
 1. **Client-Server Architecture**:
-    - **Frontend**: `src/frontend/` (Vue3 with Composition API and routing)
-    - **Backend**: `src/backend/` (ExpressJS with TypeScript)
+    - **Frontend**: Located in `frontend/` (Vue3 with Composition API and routing)
+    - **Backend**: Located in `backend/` (ExpressJS with TypeScript)
 
 2. **Corporate Identity of THD/DIT**:
-    - **Styles**: `src/frontend/assets/css/` (using plain CSS or a CSS framework)
+    - **Styles**: Located in `frontend/src/styles/main.css`
+    - **TailwindCSS**: Used to define the color palette and fonts according to THD corporate identity. Configuration is in `tailwind.config.js`.
 
 3. **Progressive Web App**:
-    - **Responsive Design**: Ensured through CSS and media queries.
+    - **Responsive Design**: Implemented using TailwindCSS with breakpoints for sm, md, and lg devices. The mobile-first approach ensures all elements without breakpoints are optimized for mobile view.
+    - **Dashboard Layout**: Utilizes `grid-layout-plus` library for a responsive dashboard layout, with `GridLayout` component managing layout for different screen sizes.
 
 4. **Database**:
-    - **MongoDB Configuration**: `src/backend/config/db.ts`
-    - **Models**: `src/backend/models/`
+    - **MongoDB Configuration**: Located in `backend/utils/db.ts`. Mongoose is used to connect to the local MongoDB server using configurations from a config file.
+    - **Models**: Located in `backend/src/models/`. Defines the `IUSER` interface extending `Document` for MongoDB to store user schema.
 
 5. **REST APIs**:
-    - **Internal REST API**: `src/backend/routes/`
-    - **External REST API (openmensa.org)**: `src/backend/services/externalApi.ts`
+    - **Internal REST API**: Implemented in `backend/src/index.ts`
+    - **External REST API**: Services located in `backend/services/`
 
 6. **Dynamic Chart**:
-    - **Implementation**: `src/frontend/components/DynamicChart.vue`
-    - **Data Fetching**: `src/backend/controllers/sensorController.ts`
+    - **Implementation**: Located in `frontend/components/DynamicChart.vue`
+    - **Data Fetching**: Managed in `backend/controllers/sensorController.ts`
 
 7. **Settings View**:
-    - **Component**: `src/frontend/components/SettingsView.vue`
-    - **Backend Handling**: `src/backend/controllers/settingsController.ts`
-    - **Settings JSON File**: `src/backend/config/settings.json`
+    - **Component**: Located in `frontend/components/SettingsView.vue`
+    - **Backend Handling**: Managed in `backend/controllers/settingsController.ts`
+    - **Settings JSON File**: Stored in `backend/config/settings.json`
 
 8. **Optional Features**:
-    - **Template Engine (Pug)**: `src/backend/views/`
-    - **OpenStreetMap Integration**: `src/frontend/components/MapView.vue`
+    - **Template Engine (Pug)**: Located in `backend/views/`
+    - **OpenStreetMap Integration**: Located in `frontend/components/MapView.vue`
+
+For more detailed information, please refer to the implementation files and documentation in the source code.
