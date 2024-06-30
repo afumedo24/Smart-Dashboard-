@@ -10,7 +10,7 @@ The **Dashboard Application** is a progressive web application designed as a cli
 ### Key Features:
 - User data input form
 - Static and dynamic charts
-- Data from Mensa, Weather, News and Market Capitalization API
+- Data from Mensa, Weather, News and Market Capitalization APIs
 - Sensor settings view with configurations stored in a JSON file
 - Integration with internal and external REST APIs
 
@@ -101,7 +101,7 @@ This section describes how various project requirements are implemented:
     - **Backend**: Located in `backend/` (ExpressJS with TypeScript)
 
 2. **Corporate Identity of THD/DIT**:
-    - **Styles**: Located in `frontend/src/styles/main.css`
+    - **Styles**: Implemented in `frontend/src/styles/main.css`
     - **TailwindCSS**: Configuration in `tailwind.config.js` defines the color palette and fonts according to THD corporate identity.
 
 3. **Progressive Web App**:
@@ -109,17 +109,16 @@ This section describes how various project requirements are implemented:
     - **Dashboard Layout**: Utilizes `grid-layout-plus` library for a responsive dashboard layout, managed by the `GridLayout` component for different screen sizes.
 
 4. **Database**:
-    - **MongoDB Configuration**: Located in `backend/utils/db.ts`. Mongoose is used to connect to the local MongoDB server using configurations from a config file.
-    - **Models**: Located in `backend/src/models/`. Defines the `IUSER` interface extending `Document` for MongoDB to store user schema.
+    - **MongoDB Configuration**: Implemented in `backend/utils/db.ts`. Mongoose is used to connect to the local MongoDB server using configurations from a config file.
+    - **Models**: Implemented in `backend/src/models/`. Defines the `IUSER` interface extending `Document` for MongoDB to store user schema.
 
 5. **REST APIs**:
-    - **Internal REST API**: Implemented in `backend/src/index.ts`
-      - Endpoints:
+    - **Internal REST API**: Implemented in `backend/src/index.ts`. I created my own REST API with the following Endpoints:
         - Get all users: `GET /users`
         - Get user: `GET /user`
         - Update user: `PATCH /user`
         - Delete user: `DELETE /user`
-    - **External REST API**: Services located in `backend/src/services/`
+    - **External REST API**: Services located in `backend/src/services/`. Thses are the Endpoints for the different external apis: 
       - OpenWeather API: `GET /services/weather`
       - News API: `GET /services/news`
       - Finnhub API: `GET /services/stocks`
@@ -129,7 +128,7 @@ This section describes how various project requirements are implemented:
 6. **Charts**:
     - **Static**: Implemented in `frontend/components/BarChart.vue` and `backend/src/controller/stockController.ts`
       - Uses Finnhub API to fetch market capitalization data for random companies and displays it in a bar chart.
-    - **Dynamic**: Implemented in `frontend/components/SensorComponent/SensorChart.vue`
+    - **Dynamic**: Implemented in `frontend/components/SensorComponent/SensorChart.vue` and `backend/src/controller/sensorsController.ts`
       - Start and stop buttons control data fetching intervals from sensor URLs, displayed in a line chart.
 
 7. **Settings View**:
@@ -150,8 +149,8 @@ This section describes how various project requirements are implemented:
 ### Stores in Pinia:
 - **User Store**: Manages user authentication and profile data.
 - **Mensa Store**: Manages data related to the mensa menu.
-- **News Store**: Manages news data fetched from external APIs.
-- **Weather Store**: Manages weather data fetched from external APIs.
+- **News Store**: Manages news data fetched from the API.
+- **Weather Store**: Manages weather data fetched from the API.
 - **Sensor Store**: Manages sensor data and settings.
-- **Stock Store**: Manages stock market data fetched from external APIs.
+- **Stock Store**: Manages stock market data fetched from the API.
 
