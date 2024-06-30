@@ -1,20 +1,21 @@
 Abdaal, Ahmed, 22110413
 
-# Dashboard Application for WP2
+# Dashboard Application
 
 [Link to MyGit Repository](https://mygit.th-deg.de/aa10413/wp2-projekt-smarthome)
 
 ## Project Description
-The **Dashboard Application** is a progressive web application designed as a client-server architecture with both frontend and backend components. The project follows the Corporate Identity of THD/DIT and is usable on both mobile phones (Android, iOS) and desktop PCs. The frontend is built with Vue3 using the Composition API and routing, while the backend is implemented using ExpressJS with TypeScript. A MongoDB database is used for data storage.
+The **Dashboard Application** is a progressive web application designed as a client-server architecture with both frontend and backend components. The project adheres to the Corporate Identity of THD/DIT and is optimized for both mobile devices (Android, iOS) and desktop PCs. The frontend is built using Vue3 with the Composition API and routing, while the backend utilizes ExpressJS with TypeScript. Data is stored in a MongoDB database.
 
-Key features include:
+### Key Features:
 - User data input form
 - Static and dynamic charts
+- Data from Mensa, Weather, News and Market Capitalization API
 - Sensor settings view with configurations stored in a JSON file
-- Integration with both internal and external REST APIs
+- Integration with internal and external REST APIs
 
 ## Prerequisites
-To run this project, you will need the following software installed:
+Ensure you have the following software installed:
 
 ### General
 - **NodeJS**: v14.17.0 or higher
@@ -35,7 +36,7 @@ To run this project, you will need the following software installed:
 - **Mongoose**: ^8.2.3
 
 ## Installation
-Follow these steps to install the project:
+Follow these steps to set up the project:
 
 1. Clone the repository:
     ```bash
@@ -46,10 +47,10 @@ Follow these steps to install the project:
     cd wp2-projekt-smarthome
     ```
 
-### Backend
+### Backend Setup
 Ensure that the MongoDB server is running on your local machine.
 
-1. Move to the backend directory:
+1. Navigate to the backend directory:
     ```bash
     cd backend
     ```
@@ -62,7 +63,7 @@ Ensure that the MongoDB server is running on your local machine.
     npm run start
     ```
 
-### Frontend
+### Frontend Setup
 1. Open a new terminal window and navigate to the frontend directory:
     ```bash
     cd wp2-projekt-smarthome/frontend
@@ -79,16 +80,12 @@ Ensure that the MongoDB server is running on your local machine.
 ## Basic Usage
 To start the project, follow these steps:
 
-After starting both applications, check the output of the frontend terminal. This will display the URL for the frontend, typically `http://localhost:5173`. Open your browser and enter this URL to access the homepage (dashboard).
-
-To use the application:
-
 1. Ensure you are connected to the THD network/VPN.
-2. Click on the login button at the top right corner of the NavBar.
-3. You will be redirected to the login page. Here, you can register a new user by clicking on the "Register" link under the login button.
-4. Fill in the required data. Ensure that the password and confirm password fields match, otherwise registration will fail.
-5. After registering, you will be redirected back to the login page. You can now log in with your username and password.
-6. Once logged in, you are free to explore the app.
+2. Check the frontend terminal output for the URL, typically `http://localhost:5173`. Open this URL in your browser to access the homepage (dashboard).
+3. Click the login button at the top right corner of the NavBar.
+4. Register a new user by clicking the "Register" link under the login button and filling in the required data. Ensure that the password and confirm password fields match.
+5. After registering, you will be redirected back to the login page. Log in with your new username and password.
+6. Once logged in, explore the app features.
 
 ### Key Use Cases
 - **Dashboard**: View the main dashboard after logging in.
@@ -96,8 +93,8 @@ To use the application:
 - **Sensors**: View current data from a Shelly sensor or get market capitalization data from companies.
 - **Settings**: Update your account data or adjust sensor settings, including which sensors to use and the access frequency.
 
-## Implementation of the Requests
-This section describes how the various project requirements are implemented:
+## Implementation Details
+This section describes how various project requirements are implemented:
 
 1. **Client-Server Architecture**:
     - **Frontend**: Located in `frontend/` (Vue3 with Composition API and routing)
@@ -105,11 +102,11 @@ This section describes how the various project requirements are implemented:
 
 2. **Corporate Identity of THD/DIT**:
     - **Styles**: Located in `frontend/src/styles/main.css`
-    - **TailwindCSS**: Used to define the color palette and fonts according to THD corporate identity. Configuration is in `tailwind.config.js`.
+    - **TailwindCSS**: Configuration in `tailwind.config.js` defines the color palette and fonts according to THD corporate identity.
 
 3. **Progressive Web App**:
     - **Responsive Design**: Implemented using TailwindCSS with breakpoints for sm, md, and lg devices. The mobile-first approach ensures all elements without breakpoints are optimized for mobile view.
-    - **Dashboard Layout**: Utilizes `grid-layout-plus` library for a responsive dashboard layout, with `GridLayout` component managing layout for different screen sizes.
+    - **Dashboard Layout**: Utilizes `grid-layout-plus` library for a responsive dashboard layout, managed by the `GridLayout` component for different screen sizes.
 
 4. **Database**:
     - **MongoDB Configuration**: Located in `backend/utils/db.ts`. Mongoose is used to connect to the local MongoDB server using configurations from a config file.
@@ -117,19 +114,44 @@ This section describes how the various project requirements are implemented:
 
 5. **REST APIs**:
     - **Internal REST API**: Implemented in `backend/src/index.ts`
-    - **External REST API**: Services located in `backend/services/`
+      - Endpoints:
+        - Get all users: `GET /users`
+        - Get user: `GET /user`
+        - Update user: `PATCH /user`
+        - Delete user: `DELETE /user`
+    - **External REST API**: Services located in `backend/src/services/`
+      - OpenWeather API: `GET /services/weather`
+      - News API: `GET /services/news`
+      - Finnhub API: `GET /services/stocks`
+      - Stromzähler: `GET /services/1/data`
+      - OpenMensa API: Directly embedded in the frontend
 
-6. **Dynamic Chart**:
-    - **Implementation**: Located in `frontend/components/DynamicChart.vue`
-    - **Data Fetching**: Managed in `backend/controllers/sensorController.ts`
+6. **Charts**:
+    - **Static**: Implemented in `frontend/components/BarChart.vue` and `backend/src/controller/stockController.ts`
+      - Uses Finnhub API to fetch market capitalization data for random companies and displays it in a bar chart.
+    - **Dynamic**: Implemented in `frontend/components/SensorComponent/SensorChart.vue`
+      - Start and stop buttons control data fetching intervals from sensor URLs, displayed in a line chart.
 
 7. **Settings View**:
-    - **Component**: Located in `frontend/components/SettingsView.vue`
-    - **Backend Handling**: Managed in `backend/controllers/settingsController.ts`
+    - **User Settings**: Implemented in `frontend/src/components/SettingsView.vue`
+      - Allows updating user data like username and email, and deleting user accounts.
+    - **Sensor Settings**: Implemented in `frontend/src/components/SettingsView.vue`
+      - Reads settings from `settings.json` in the backend and updates the values accordingly.
     - **Settings JSON File**: Stored in `backend/config/settings.json`
 
 8. **Optional Features**:
-    - **Template Engine (Pug)**: Located in `backend/views/`
-    - **OpenStreetMap Integration**: Located in `frontend/components/MapView.vue`
+    - **Logger**: Implemented in `backend/utils/logger.ts` using Pino with Pino Pretty for formatting.
+    - **JSON Web Token (JWT)**: Implemented in `backend/controllers/authController.ts`
+      - Generates and verifies JWT tokens for user authentication.
+    - **Pinia**: Located in `frontend/src/stores/`
+      - Multiple stores handle various states: user, mensa, news, weather, sensor, and stock.
+      - Each store manages state and actions related to its respective module.
 
-For more detailed information, please refer to the implementation files and documentation in the source code.
+### Stores in Pinia:
+- **User Store**: Manages user authentication and profile data.
+- **Mensa Store**: Manages data related to the mensa menu.
+- **News Store**: Manages news data fetched from external APIs.
+- **Weather Store**: Manages weather data fetched from external APIs.
+- **Sensor Store**: Manages sensor data and settings.
+- **Stock Store**: Manages stock market data fetched from external APIs.
+
