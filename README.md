@@ -5,7 +5,7 @@ Abdaal, Ahmed, 22110413
 [Link to MyGit Repository](https://mygit.th-deg.de/aa10413/wp2-projekt-smarthome)
 
 ## Project Description
-The **THD/DIT Client-Server Application** is a progressive web application designed as a client-server architecture with both frontend and backend components. The project follows the Corporate Identity of THD/DIT and is usable on both mobile phones (Android, iOS) and desktop PCs. The frontend is built with Vue3 using the Composition API and routing, while the backend is implemented using ExpressJS with TypeScript. A MongoDB database is used for data storage.
+The **Dashboard Application** is a progressive web application designed as a client-server architecture with both frontend and backend components. The project follows the Corporate Identity of THD/DIT and is usable on both mobile phones (Android, iOS) and desktop PCs. The frontend is built with Vue3 using the Composition API and routing, while the backend is implemented using ExpressJS with TypeScript. A MongoDB database is used for data storage.
 
 Key features include:
 - User data input form
@@ -73,7 +73,7 @@ Make sure that the MongoDB server is already running on your local machine.
     ```
 3. Start the frontend development server:
     ```bash
-    npm run dev ```
+    npm run dev
 
 ## Basic Usage
 To start the project, follow these steps:
