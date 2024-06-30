@@ -2,7 +2,9 @@ import { Router } from "express";
 import { login, register } from "../controllers/authController";
 
 /*
-    these are the routes creating a new user and login
+    these are the routes for:
+        - registering a new user
+        - logging in a user
 */
 export default (router: Router) => {
     router.post('/auth/register', register),

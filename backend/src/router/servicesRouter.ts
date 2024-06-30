@@ -1,10 +1,12 @@
 import { Router} from 'express'
 import { getNews, getWeather } from './../controllers/servicesController';
 import { getStocks } from './../controllers/stockController';
+
 /*
-    all the routes which use a external API are defined here
-    they don`t need validation because should be accessible
-    to everyone
+    these are the routes for:
+        - sending the news data
+        - sending the weather data
+        - sending the market capitalization data
 */
 export default (router:Router ) => {
     router.get("/services/news", getNews)

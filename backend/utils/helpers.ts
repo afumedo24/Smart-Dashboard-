@@ -15,7 +15,7 @@ export const hashPassword = (password: string) => {
     return crypto.createHmac('sha256', [SALT, password].join('/')).update(SECRET).digest('hex');
 }
 
-// a function that generates a token using jwt
+// a function that generates a token with payload using jwt
 export const signToken = (payload: any) => {
     return jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
 }
@@ -43,28 +43,34 @@ export const weatherIconURL = (icon: string) => {
     return `https://openweathermap.org/img/wn/${icon}.png`;
 }
 
+// a function that reads the settings.json file and 
+// returns the active Sensor with URL from the congif file
 export const setActiveSensor = async () => {
     //Settings JSON file absolute path
     const settingsFilePath = ((process.cwd()) + '/config/settings.json')
-
     try {
+        // Read the settings.json file and parse it
         const settingsFileContent = await fs.readFile(settingsFilePath, 'utf-8');
         const settings = JSON.parse(settingsFileContent);
 
+        // Filter out the active sensor
         let activeSensors = lodash.filter(settings.sensors, (sensor) => lodash.get(sensor, 'isActive'));
         
-        // Map over active sensors to add the URL
+        // Map over active sensors to add the related URL
         activeSensors = lodash.map(activeSensors, (sensor) => {
+            // Extract the ID of the active sensor
             const sensorId = lodash.get(sensor, 'id');
             logger.info(`Sensor ${sensorId} is active.`);
-            let sensorUrl: string;
+            let sensorUrl:string;
 
+            // Get the URL based on the sensor ID
             if (sensorId === 1) {
                 sensorUrl = config.get<string>('thd_sensor1_uri');
             } else if (sensorId === 2) {
                 sensorUrl = config.get<string>('thd_sensor2_uri');
             } else {
-                sensorUrl = 'Unknown URL'; // Default or error URL
+                // If the sensor ID is unknown, log an error
+                sensorUrl = 'Unknown URL';
                 logger.error(`Unknown sensor ID: ${sensorId}`);
             }
 
@@ -75,8 +81,7 @@ export const setActiveSensor = async () => {
             };
         });
 
-        // Log and return the active sensors with URLs
-        //console.log(activeSensors);
+        // return the active sensors with URL
         return activeSensors;
 
     } catch (error: any) {
