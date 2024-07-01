@@ -175,13 +175,14 @@ This section describes how various project requirements are implemented:
         - The settings are also stored in the sensor store.
 
 8. **Optional Features**:
-    - **Logger**: Implemented in `backend/utils/logger.ts` using Pino with Pino Pretty for formatting.
+    - **Logger**: Implemented in `backend/utils/logger.ts` 
+        - Using Pino Logger with Pino Pretty for formatting.
     - **JSON Web Token (JWT)**: Implemented in `backend/controllers/authController.ts`
         - Generates and verifies JWT tokens for user authentication.
     - **Pinia**: Located in `frontend/src/stores/`
         - Multiple stores handle various states: user, mensa, news, weather, sensor, and stock.
         - Each store manages state and actions related to its respective module, making data handling a lot easier.
-            *Stores in Pinia*:
+        - *Stores in Pinia*:
             - `User Store`: Manages user authentication and profile data.
             - `Mensa Store`: Manages data related to the mensa menu.
             - `News Store`: Manages news data fetched from the API.
