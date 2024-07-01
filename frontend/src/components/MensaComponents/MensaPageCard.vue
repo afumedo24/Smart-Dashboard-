@@ -11,7 +11,9 @@
         THD Mensa
       </p>
       <!-- Main heading -->
-      <h1 class="text-3xl md:text-5xl lg:text-6xl text-center md:text-left font-bold md:drop-shadow-lg mb-5 md:mb-10">
+      <h1
+        class="text-3xl md:text-5xl lg:text-6xl text-center md:text-left font-bold md:drop-shadow-lg mb-5 md:mb-10"
+      >
         Choose Healthy <br />
         & Fresh Food
       </h1>
@@ -19,13 +21,16 @@
       <!-- Button to navigate to today's menu -->
       <button
         class="w-[200px] block mx-auto md:w-full py-3 md:py-5 px-5 md:px-6 mb-3 md:mb-5 bg-secondary text-white text-md md:text-lg lg:text-xl font-medium rounded-2xl md:rounded-3xl drop-shadow-md"
-        @click="router.push('/mensa/menu')">
+        @click="router.push('/mensa/menu')"
+      >
         See Today's Menu
       </button>
 
       <!-- Button to open the date picker modal -->
-      <button @click="openModal"
-        class="w-[200px] block mx-auto md:w-full py-3 md:py-5 px-5 md:px-6 mb-3 md:mb-5 outline outline-darkShade text-md md:text-lg lg:text-xl font-medium rounded-2xl md:rounded-[24px] drop-shadow-md">
+      <button
+        @click="openModal"
+        class="w-[200px] block mx-auto md:w-full py-3 md:py-5 px-5 md:px-6 mb-3 md:mb-5 outline outline-darkShade text-md md:text-lg lg:text-xl font-medium rounded-2xl md:rounded-[24px] drop-shadow-md"
+      >
         Choose a Day
       </button>
 

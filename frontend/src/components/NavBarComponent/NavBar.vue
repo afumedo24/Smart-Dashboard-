@@ -10,7 +10,11 @@
   <nav class="w-full top-0 left-0 drop-shadow-md fixed z-10">
     <div class="md:px-10 py-8 px-7 md:flex justify-between items-center bg-main text-white">
       <!-- Logo -->
-      <img @click="router.push('/')" src="../../assets/thd_logo_weis.png" class="h-10 md:h-11 lg:h-14 cursor-pointer" />
+      <img
+        @click="router.push('/')"
+        src="../../assets/thd_logo_weis.png"
+        class="h-10 md:h-11 lg:h-14 cursor-pointer"
+      />
 
       <!-- Burger Menu Icon -->
       <div class="fixed right-8 top-8 cursor-pointer md:hidden" @click="toggleMenu">
@@ -20,11 +24,18 @@
       <!-- Navigation Links -->
       <ul
         class="md:flex md:items-center md:pb-0 pb-12 bg-main text-white absolute md:static left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"
-        :class="isOpen ? 'block' : 'hidden'">
+        :class="isOpen ? 'block' : 'hidden'"
+      >
         <li v-for="link in navLinks" :key="link.text" class="md:ml-8 my-7 md:my-0">
           <RouterLink :to="link.path">
-            <p class="font-medium cursor-pointer hover:text-darkAccent text-lg md:text-xl lg:text-2xl"
-              :class="link.path === route.path ? 'text-darkShade underline underline-offset-8' : 'text-white'">
+            <p
+              class="font-medium cursor-pointer hover:text-darkAccent text-lg md:text-xl lg:text-2xl"
+              :class="
+                link.path === route.path
+                  ? 'text-darkShade underline underline-offset-8'
+                  : 'text-white'
+              "
+            >
               {{ link.text }}
             </p>
           </RouterLink>
@@ -32,8 +43,10 @@
 
         <!-- Login/Logout Button -->
         <li class="md:ml-8 my-7 md:my-0">
-          <button @click="handleAuthAction()"
-            class="bg-secondary text-white py-2 px-6 rounded-lg text-lg md:text-xl lg:text-2xl md:py-3 md:px-8">
+          <button
+            @click="handleAuthAction()"
+            class="bg-secondary text-white py-2 px-6 rounded-lg text-lg md:text-xl lg:text-2xl md:py-3 md:px-8"
+          >
             {{ isLogged ? 'Logout' : 'Login' }}
           </button>
         </li>

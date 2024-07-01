@@ -22,8 +22,8 @@ export const useNewsStore = defineStore('news', () => {
 
   // Return all reactive properties and functions
   return {
-    news, 
-    getNews, 
-    fetchNews 
+    news,
+    getNews,
+    fetchNews
   }
 })

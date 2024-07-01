@@ -6,7 +6,8 @@
 <template>
   <!-- Card (Background) -->
   <div
-    class="flex flex-col justify-end rounded-2xl px-8 pb-8 max-w-[730px] h-[240px] md:h-[320px] mx-auto my-8 bg-darkShade text-white">
+    class="flex flex-col justify-end rounded-2xl px-8 pb-8 max-w-[730px] h-[240px] md:h-[320px] mx-auto my-8 bg-darkShade text-white"
+  >
     <!-- Displaying menu category -->
     <div class="mt-3 gap-y-1 text-sm md:text-md">{{ menu.category }}</div>
     <!-- Displaying menu name -->

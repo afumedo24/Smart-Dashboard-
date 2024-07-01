@@ -46,7 +46,7 @@ const componentMap: Record<string, any> = {
 }
 
 // this function is used in the template to render the component
-// based on the layout item id 
+// based on the layout item id
 const getComponent = (id: string) => componentMap[id] || null
 
 // Preset layouts for different screen sizes
@@ -76,5 +76,4 @@ const presetLayouts = reactive({
 
 // Use a ref for the current layout
 const layout = ref(presetLayouts.lg)
-
 </script>

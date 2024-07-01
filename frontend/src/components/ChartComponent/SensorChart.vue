@@ -7,10 +7,16 @@
   <div class="p-4">
     <!-- Control buttons to start and stop sensor data -->
     <div class="flex items-center justify-center gap-4">
-      <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2" @click="sensorStore.start()">
+      <button
+        class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
+        @click="sensorStore.start()"
+      >
         Start
       </button>
-      <button class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2" @click="sensorStore.stop()">
+      <button
+        class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
+        @click="sensorStore.stop()"
+      >
         Stop
       </button>
     </div>

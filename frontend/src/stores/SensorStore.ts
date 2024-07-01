@@ -93,14 +93,14 @@ export const useSensorStore = defineStore('sensor', () => {
   // Return all reactive properties and functions of the store
   return {
     sensorData,
-    sensorDataLabels, 
-    allSensors, 
-    frequency, 
-    activeSensor, 
-    fetchCurrentSensorData, 
-    start, 
-    stop, 
-    fetchSensorSettings, 
-    updateSensorSettings 
+    sensorDataLabels,
+    allSensors,
+    frequency,
+    activeSensor,
+    fetchCurrentSensorData,
+    start,
+    stop,
+    fetchSensorSettings,
+    updateSensorSettings
   }
 })

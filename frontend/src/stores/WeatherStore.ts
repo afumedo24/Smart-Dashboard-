@@ -22,8 +22,8 @@ export const useWeatherStore = defineStore('weather', () => {
 
   // Return all reactive properties and functions
   return {
-    weather, 
-    getWeather, 
-    fetchWeather 
+    weather,
+    getWeather,
+    fetchWeather
   }
 })

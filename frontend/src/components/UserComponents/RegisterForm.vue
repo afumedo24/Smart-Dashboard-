@@ -7,29 +7,50 @@
 
 <template>
   <div
-    class="flex flex-col items-center justify-center mt-[50px] bg-lightShade rounded-xl shadow-md p-10 md:w-[600px] md:h-[500px] mx-auto">
+    class="flex flex-col items-center justify-center mt-[50px] bg-lightShade rounded-xl shadow-md p-10 md:w-[600px] md:h-[500px] mx-auto"
+  >
     <!-- Title -->
     <h2 class="text-4xl md:text-5xl font-bold text-center mb-8">User Register</h2>
 
     <!-- Username Input -->
-    <input type="text" v-model="user.username" placeholder="Username"
-      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none" />
+    <input
+      type="text"
+      v-model="user.username"
+      placeholder="Username"
+      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
+    />
 
     <!-- Email Input -->
-    <input type="email" v-model="user.email" placeholder="Email"
-      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none" />
+    <input
+      type="email"
+      v-model="user.email"
+      placeholder="Email"
+      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
+    />
 
     <!-- Password Input -->
-    <input type="password" v-model="user.password" placeholder="Password"
-      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none" />
+    <input
+      type="password"
+      v-model="user.password"
+      placeholder="Password"
+      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
+    />
 
     <!-- Confirm Password Input -->
-    <input type="password" v-model="checkPassword" placeholder="Confirm Password"
-      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none" />
+    <input
+      type="password"
+      v-model="checkPassword"
+      placeholder="Confirm Password"
+      class="w-full p-4 mb-4 md:text-lg rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none"
+    />
 
     <!-- Registration Button -->
-    <button @click="handleSignUp()" :disabled="!confirmassword" :class="confirmassword ? '' : 'cursor-not-allowed'"
-      class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2">
+    <button
+      @click="handleSignUp()"
+      :disabled="!confirmassword"
+      :class="confirmassword ? '' : 'cursor-not-allowed'"
+      class="bg-secondary text-white md:text-lg rounded-lg px-6 py-2"
+    >
       Register
     </button>
 

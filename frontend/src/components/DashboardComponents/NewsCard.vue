@@ -8,8 +8,10 @@
     <!-- Navigation and news display section -->
     <div class="flex items-center justify-between gap-2">
       <!-- Previous news button -->
-      <div class="w-10 h-10 bg-main opacity-10 hover:opacity-50 rounded-full relative flex items-start justify-center"
-        @click="prevNews">
+      <div
+        class="w-10 h-10 bg-main opacity-10 hover:opacity-50 rounded-full relative flex items-start justify-center"
+        @click="prevNews"
+      >
         <v-icon name="md-keyboardarrowleft" class="w-10 md:w-12 lg:w-14" scale="2" fill="black" />
       </div>
       <!-- Current news display -->
@@ -22,8 +24,10 @@
         <p class="text-lg font-light">Loading...</p>
       </div>
       <!-- Next news button -->
-      <div class="w-10 h-10 bg-main opacity-10 hover:opacity-50 rounded-full flex items-start justify-center"
-        @click="nextNews">
+      <div
+        class="w-10 h-10 bg-main opacity-10 hover:opacity-50 rounded-full flex items-start justify-center"
+        @click="nextNews"
+      >
         <v-icon name="md-keyboardarrowright" class="w-10 md:w-12 lg:w-14" scale="2" fill="black" />
       </div>
     </div>

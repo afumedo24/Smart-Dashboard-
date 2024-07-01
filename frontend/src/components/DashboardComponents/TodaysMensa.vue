@@ -42,5 +42,4 @@ onMounted(() => {
   mensaStore.fetchMenu()
   loading.value = false // Set loading to false after fetch is complete
 })
-
 </script>

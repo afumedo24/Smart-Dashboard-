@@ -13,15 +13,25 @@
   <div class="flex-row bg-lightShade rounded-xl px-6 py-2 md:px-20 md:py-10">
     <div class="flex justify-between items-center">
       <!-- Left arrow for navigating to the previous day -->
-      <v-icon name="md-keyboardarrowleft" @click="mensaStore.setDateToPrevious()" class="w-14 md:w-20 lg:w-40" scale="6"
-        fill="black" />
+      <v-icon
+        name="md-keyboardarrowleft"
+        @click="mensaStore.setDateToPrevious()"
+        class="w-14 md:w-20 lg:w-40"
+        scale="6"
+        fill="black"
+      />
       <!-- Displaying the current date -->
       <h1 class="flex text-center text-2xl md:text-4xl lg:text-6xl font-semibold">
         Menu of {{ mensaStore.getDate }}
       </h1>
       <!-- Right arrow for navigating to the next day -->
-      <v-icon name="md-keyboardarrowright" @click="mensaStore.setDateToNext()" class="w-14 md:w-20 lg:w-40" scale="6"
-        fill="black" />
+      <v-icon
+        name="md-keyboardarrowright"
+        @click="mensaStore.setDateToNext()"
+        class="w-14 md:w-20 lg:w-40"
+        scale="6"
+        fill="black"
+      />
     </div>
 
     <!-- Loading state while fetching menu -->
@@ -30,7 +40,10 @@
     </div>
 
     <!-- Displayed when no menu is available -->
-    <div v-else-if="menus.length === 0" class="text-center text-2xl md:text-4xl lg:text-6xl p-8 md:p-16">
+    <div
+      v-else-if="menus.length === 0"
+      class="text-center text-2xl md:text-4xl lg:text-6xl p-8 md:p-16"
+    >
       No menu available
     </div>
 

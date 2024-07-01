@@ -50,13 +50,13 @@ export const useMensaStore = defineStore('mensa', () => {
 
   // Return all reactive properties and functions
   return {
-    menus, 
+    menus,
     fetchMenu,
-    date, 
-    getDate, 
+    date,
+    getDate,
     setDate,
-    setDateToPrevious, 
-    setDateToNext, 
+    setDateToPrevious,
+    setDateToNext,
     getDateForAPI
   }
 })
