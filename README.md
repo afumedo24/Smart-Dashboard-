@@ -154,29 +154,42 @@ This section describes how various project requirements are implemented:
         - OpenMensa API: Directly embedded in the frontend
 
 6. **Charts**:
-    - **Static**: Implemented in `frontend/components/BarChart.vue`, `backend/src/services/stocksapi.ts` and `backend/src/controller/stockController.ts`
+    - **Static**: Implemented in `frontend/components/ChartComponent/BarChart.vue`, `backend/src/services/stocksapi.ts` and `backend/src/controller/stockController.ts`
         - Uses Finnhub API to fetch market capitalization data for 6 random companies in the services file.
         - The function is called by the stockController, which sends the data to the frontend.
         - The data is stored in a stocks store and displayed in the BarChart component.
-    - **Dynamic**: Implemented in `frontend/components/SensorComponent/SensorChart.vue`, `backend/src/services/sensorsapi.ts` and `backend/src/controller/sensorsController.ts`
-        - Fetches the current (strom) from one of the two sensors and extracts only the current value.
+    - **Dynamic**: Implemented in `frontend/components/ChartComponent/SensorChart.vue`, `backend/src/services/sensorsapi.ts` and `backend/src/controller/sensorsController.ts`
+        - Fetches the current (strom) from one of the two sensors and extracts only the current (strom).
         - The function is called by the sensorsController, which sends the data to the frontend.
-        - The data is stored in a sensor store and displayed in the LineChart component.
+        - The data is stored in a sensor store and displayed in the SensorChart component.
         - In the LineChart component, there are two buttons that start and stop the loop for data fetching.
         - The data fetching is done in intervals of a specific frequency.
         - This frequency is read from the settings.json.
 
 7. **Settings View**:
-    - **User Settings**: Implemented in `frontend/src/components/SettingsView.vue`
+    - **User Settings**: Implemented in `frontend/src/components/UserComponents/UserForm.vue`
         - Sends requests to the respective endpoint with the correct HTTP method.
         - Allows updating user data like username and email, and deleting user accounts.
-    - **Sensor Settings**: Implemented in `frontend/src/components/SettingsView.vue`
+    - **Sensor Settings**: Implemented in `frontend/src/components/SettingsComponents/SensorSettings.vue`
         - Reads settings from `settings.json` in the backend and can also update the values accordingly.
         - The settings are also stored in the sensor store.
 
 8. **Optional Features**:
     - **Logger**: Implemented in `backend/utils/logger.ts` using Pino with Pino Pretty for formatting.
-    - **JSON Web Token (JWT)**: Implemented in `
+    - **JSON Web Token (JWT)**: Implemented in `backend/controllers/authController.ts`
+        - Generates and verifies JWT tokens for user authentication.
+    - **Pinia**: Located in `frontend/src/stores/`
+        - Multiple stores handle various states: user, mensa, news, weather, sensor, and stock.
+        - Each store manages state and actions related to its respective module, making data handling a lot easier.
+            *Stores in Pinia*:
+            - `User Store`: Manages user authentication and profile data.
+            - `Mensa Store`: Manages data related to the mensa menu.
+            - `News Store`: Manages news data fetched from the API.
+            - `Weather Store`: Manages weather data fetched from the API.
+            - `Sensor Store`: Manages sensor data and settings.
+            - `Stock Store`: Manages stock market data fetched from the API.
+    - **VueUse**: Implemented in `frontend/src/components/MensaComponents/DatePickerModal.vue`
+        - *onClickOutside Hook*: Integrated with datepicker modal to detect and handle clicks outside of the modal component, ensuring user-friendly interaction.
     
 
 ### Sources
