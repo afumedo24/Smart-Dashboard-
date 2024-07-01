@@ -1,28 +1,25 @@
 <!-- 
-    This is the the Menu Card Component for displaying the menu from the MensaAPI. This 
-    contains a Card as the Background, and a the Menu objects name and type. These object
-    is defined as a Prop, so that we can get it from the parent component 
+    This is the Menu Card Component for displaying menu items fetched from the MensaAPI.
+    It features a card-style background and displays details such as category, name, and prices.
+    The 'menu' object is passed as a prop from the parent component.
 -->
 <template>
-  <!-- the Card (Background) -->
+  <!-- Card (Background) -->
   <div
-    class="flex flex-col justify-end rounded-2xl px-8 pb-8 max-w-[730px] h-[240px] md:h-[320px] mx-auto my-8 bg-darkShade text-white"
-  >
-    <!-- Menu object: the type and name of the dish -->
+    class="flex flex-col justify-end rounded-2xl px-8 pb-8 max-w-[730px] h-[240px] md:h-[320px] mx-auto my-8 bg-darkShade text-white">
+    <!-- Displaying menu category -->
     <div class="mt-3 gap-y-1 text-sm md:text-md">{{ menu.category }}</div>
+    <!-- Displaying menu name -->
     <h3 class="text-xl md:text-3xl font-medium text-darkAccent">{{ menu.name }}</h3>
-    <p class="text-md md:text-lg">Price for Students: {{ menu.prices.students }} Є</p>
+    <!-- Displaying price for students -->
+    <p class="text-md md:text-lg">Price for Students: {{ menu.prices.students }} €</p>
   </div>
 </template>
 
-<!-- 
-    The Script setup for the Menu Card Component. This contains the Props for the Menu Card Component
-    and gets the Props from the parent component
--->
 <script setup lang="ts">
-// import the type of Menu
-import { type IMenu } from '../../services/types/MensaMenu.type'
+// Importing the type of 'menu' object
+import type { IMenu } from '@/services/types/MensaMenu.type'
 
-// get the Props from the parent component
+// Defining props to receive 'menu' from parent component
 const props = defineProps<{ menu: IMenu }>()
 </script>

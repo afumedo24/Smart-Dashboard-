@@ -34,11 +34,13 @@ const router = createRouter({
       component: SettingsPage
     },
     {
+      // lazy loading of the login page because it is not needed on the initial load
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginPage.vue')
     },
     {
+      // lazy loading of the login page because it is not needed on the initial load
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterPage.vue')
