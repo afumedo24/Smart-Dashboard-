@@ -2,23 +2,17 @@
 export default {
   content: ['./src/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      aspectRatio: {
-        '4/3': '4 / 3',
-        '2/3': '2 / 3',
-        '1/2': '1 / 2'
-      }
-    },
+    extend: { },
     colors: {
       main: '#1A4273',
       secondary: '#009FE3',
-      lightShade: '#D3D2C8',
-      darkShade: '#12151A',
-      darkAccent: '#4973B1',
-
+      lightShade: '#dadada',
       thd_ai_red: '#E73D55',
+      
       white: '#ffffff',
-      black: '#1A1A1A'
+      black: '#4973B1',
+      darkAccent: '#4973B1',
+      darkShade: '#12151A',
     },
     fontFamily: {
       saira: ['saira', 'sans-serif']
