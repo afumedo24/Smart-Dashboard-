@@ -145,6 +145,8 @@ This section describes how various project requirements are implemented:
     - **Pinia**: Located in `frontend/src/stores/`
       - Multiple stores handle various states: user, mensa, news, weather, sensor, and stock.
       - Each store manages state and actions related to its respective module.
+    - **VueUse**: Implemented in `frontend/src/components/MensaComponents/DatePickerModal.vue`
+      - *onClickOutside Hook*: Integrated with datepicker modal to detect and handle clicks outside of the modal    component, ensuring user-friendly interaction
 
 ### Stores in Pinia:
 - **User Store**: Manages user authentication and profile data.
