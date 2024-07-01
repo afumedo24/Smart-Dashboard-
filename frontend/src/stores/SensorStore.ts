@@ -1,21 +1,25 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import myRestInstance from '../services/axios/rest.config'
-import type { SensorData, SensorSettings, Sensors } from '../services/types/Sensor.type'
+import myRestInstance from '../services/axios/rest.config' // Import Axios instance for REST API
+import type { SensorData, SensorSettings, Sensors } from '../services/types/Sensor.type' // Import type definitions for Sensor data
 
 export const useSensorStore = defineStore('sensor', () => {
+  // State variables for sensor data and settings
   const sensorData = ref<Array<{ x: number; y: number }>>([])
   const sensorDataLabels = ref<number[]>([])
   const allSensors = ref<Sensors[]>([])
-  const frequency = ref<number>(5) // default frequency to 5 seconds
+  const frequency = ref<number>(5) // Default frequency set to 5 seconds
 
+  // Computed property: Retrieves the name of the currently active sensor
   const activeSensor = computed(() => {
     const activeSensor = allSensors.value.find((sensor) => sensor.isActive === true)
     return activeSensor ? activeSensor.name : ''
   })
+
   let timer = 0
   let intervalId: number | null = null
 
+  // Action: Fetches current sensor data from the API
   async function fetchCurrentSensorData() {
     try {
       if (timer === 0) {
@@ -41,6 +45,7 @@ export const useSensorStore = defineStore('sensor', () => {
     }
   }
 
+  // Function: Starts fetching sensor data at regular intervals
   const start = () => {
     if (intervalId === null) {
       intervalId = window.setInterval(fetchCurrentSensorData, frequency.value * 1000)
@@ -48,6 +53,7 @@ export const useSensorStore = defineStore('sensor', () => {
     }
   }
 
+  // Function: Stops the interval fetching sensor data
   const stop = () => {
     if (intervalId !== null) {
       window.clearInterval(intervalId)
@@ -56,6 +62,7 @@ export const useSensorStore = defineStore('sensor', () => {
     }
   }
 
+  // Action: Fetches sensor settings from the API
   async function fetchSensorSettings() {
     try {
       const response = await myRestInstance.get(`/sensor/settings`)
@@ -66,6 +73,7 @@ export const useSensorStore = defineStore('sensor', () => {
     }
   }
 
+  // Action: Updates sensor settings via API
   async function updateSensorSettings() {
     const newSettings: SensorSettings = {
       sensors: allSensors.value,
@@ -73,25 +81,26 @@ export const useSensorStore = defineStore('sensor', () => {
     }
     try {
       await myRestInstance.put(`/sensor/settings`, newSettings)
-      await fetchSensorSettings()
-      sensorData.value = []
-      sensorDataLabels.value = []
-      timer = 0
+      await fetchSensorSettings() // Fetch updated settings after update
+      sensorData.value = [] // Clear sensor data after settings update
+      sensorDataLabels.value = [] // Clear sensor data labels after settings update
+      timer = 0 // Reset timer after settings update
     } catch (error) {
       console.error('Error updating SensorSettings: ', error)
     }
   }
 
+  // Return all reactive properties and functions of the store
   return {
     sensorData,
-    sensorDataLabels,
-    allSensors,
-    frequency,
-    activeSensor,
-    fetchCurrentSensorData,
-    start,
-    stop,
-    fetchSensorSettings,
-    updateSensorSettings
+    sensorDataLabels, 
+    allSensors, 
+    frequency, 
+    activeSensor, 
+    fetchCurrentSensorData, 
+    start, 
+    stop, 
+    fetchSensorSettings, 
+    updateSensorSettings 
   }
 })

@@ -1,24 +1,29 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import myRestInstance from '../services/axios/rest.config'
-import { type INews } from '../services/types/News.type'
+import myRestInstance from '../services/axios/rest.config' // Import Axios instance for REST API
+import { type INews } from '../services/types/News.type' // Import type definition for News
 
 export const useNewsStore = defineStore('news', () => {
-  // this is the state of the store
+  // State variable: Array to store fetched news items
   const news = ref<INews[]>([])
 
-  // this is the getter of the store
+  // Computed property: Retrieves the current state of news
   const getNews = computed(() => news.value)
 
-  // this is the action of the store
+  // Action: Fetches news data from the API
   async function fetchNews() {
     try {
       const response = await myRestInstance.get(`/services/news`)
-      news.value = response.data
+      news.value = response.data // Update news array with fetched data
     } catch (error) {
-      console.error('Error fetching News: ', error)
+      console.error('Error fetching News: ', error) // Log error if fetching fails
     }
   }
 
-  return { news, getNews, fetchNews }
+  // Return all reactive properties and functions
+  return {
+    news, 
+    getNews, 
+    fetchNews 
+  }
 })
