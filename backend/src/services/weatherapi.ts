@@ -36,8 +36,8 @@ export const fetchWeather = async (): Promise<IWeather | null> => {
         logger.info("Weather fetched successfully");
         // return the weather data
         return weather;
-    } catch (error) {
-        logger.error(error);
+    } catch (error: any) {
+        logger.error('Error while fetching Weather data: ', error.message);
         return null;
     }
 }

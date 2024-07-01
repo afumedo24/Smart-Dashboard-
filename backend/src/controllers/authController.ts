@@ -4,8 +4,9 @@ import { hashPassword, signToken } from "../../utils/helpers";
 import logger from '../../utils/logger';
 
 // a function to register a new user
-export const register = async (req: Request, res: Response) => {
-    const { username, email, password } = req.body; // get the username, email and password from the request body
+export const register = async (req: Request, res: Response): Promise<Response>  => {
+    // get the username, email and password from the request body
+    const { username, email, password } = req.body; 
     try {
         // Check if for empty fields
         if (!email || !password || !username ) {
@@ -36,10 +37,10 @@ export const register = async (req: Request, res: Response) => {
 }
 
 // a function to login a user using a jwt token
-export const login = async (req:Request, res:Response) => {
-    const { username, password } = req.body; // get the username and password from the request body
-    console.log("username", username);
-    console.log("password", password);
+export const login = async (req:Request, res:Response): Promise<Response>  => {
+    // get the username and password from the request body
+    const { username, password } = req.body; 
+
     try {
         // Check if for empty fields
         if (!password || !username ) {

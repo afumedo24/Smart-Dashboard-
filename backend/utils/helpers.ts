@@ -43,9 +43,16 @@ export const weatherIconURL = (icon: string) => {
     return `https://openweathermap.org/img/wn/${icon}.png`;
 }
 
+interface IActiveSensor {
+    id: number;
+    name: string;
+    url?: string;
+    isActive: boolean;
+}
+
 // a function that reads the settings.json file and 
 // returns the active Sensor with URL from the congif file
-export const setActiveSensor = async () => {
+export const setActiveSensor = async (): Promise<IActiveSensor | null> => {
     //Settings JSON file absolute path
     const settingsFilePath = ((process.cwd()) + '/config/settings.json')
     try {
@@ -54,7 +61,7 @@ export const setActiveSensor = async () => {
         const settings = JSON.parse(settingsFileContent);
 
         // Filter out the active sensor
-        let activeSensors = lodash.filter(settings.sensors, (sensor) => lodash.get(sensor, 'isActive'));
+        let activeSensors: IActiveSensor[] = lodash.filter(settings.sensors, (sensor) => lodash.get(sensor, 'isActive'));
         
         // Map over active sensors to add the related URL
         activeSensors = lodash.map(activeSensors, (sensor) => {
@@ -82,10 +89,10 @@ export const setActiveSensor = async () => {
         });
 
         // return the active sensors with URL
-        return activeSensors;
+        return activeSensors[0];
 
     } catch (error: any) {
         logger.error('Error reading settings file:', error.message)
-        return [];
+        return null;
     }
 }

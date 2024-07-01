@@ -31,8 +31,8 @@ export const fetchNews = async (): Promise<INews[] | null>  => {
         logger.info("News fetched successfully");
         // return the news data
         return news;
-    } catch (error) {
-        logger.error(error);
+    } catch (error: any) {
+        logger.error('Error while fetching News data: ', error.message);
         return null;
     }
 }

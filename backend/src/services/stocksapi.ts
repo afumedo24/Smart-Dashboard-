@@ -28,8 +28,8 @@ async function fetchStockSymbols() {
     logger.info('Fetched stock symbols');
     // Use lodash to slice the response data
     return lodash.slice(response.data, 0, 6)
-  } catch (error) {
-    logger.error('Error fetching stock symbols:', error);
+  } catch (error: any) {
+    logger.error('Error fetching stock symbols:', error.message);
     return [];
   }
 }
@@ -39,8 +39,8 @@ async function fetchStockProfile(symbol: string): Promise<StockProfile | null> {
   try {
     const response = await axios.get<StockProfile>(`${FINNHUB_BASE_URI}/stock/profile2?symbol=${symbol}&token=${FINNHUB_API_KEY}`);
     return response.data;
-  } catch (error) {
-    logger.error(`Error fetching profile for ${symbol}:`, error);
+  } catch (error: any) {
+    logger.error(`Error fetching profile for ${symbol}:`, error.message);
     return null;
   }
 }
@@ -62,8 +62,8 @@ export async function fetchMarkCap(): Promise<{ name: string; marketCap: number 
     }
     logger.info('Fetched stock data');
     return stockData;
-  } catch (error) {
-    logger.error('Error fetching stock data:', error);
+  } catch (error: any) {
+    logger.error('Error fetching stock data:',  error.message);
     return [];
   }
 }
